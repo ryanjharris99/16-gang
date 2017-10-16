@@ -3,7 +3,7 @@
 from map import rooms
 from player import *
 from items import *
-from parser import *
+from gameparser import *
 
 
 

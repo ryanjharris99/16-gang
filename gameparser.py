@@ -1,4 +1,5 @@
 import string
+import items
 
 # List of "unimportant" words (feel free to add more)
 key_words = ["go", "south", "north", "west", "east", "take", "drop", "read", "hit"]
@@ -6,13 +7,20 @@ key_words = ["go", "south", "north", "west", "east", "take", "drop", "read", "hi
 
 def filter_words(words, key_words):
     """This function takes a list of words and returns a copy of the list from
-    which all words provided in the list skip_words have been removed.
+    which all words provided in the list key_words have been removed.
     For example:
     """
     filtered_list = []
     for word in words:
         if word.lower() in key_words:
             filtered_list.append(word)
+        else:
+        	for item in items.items_list:
+        		if word.lower() == item["id"]:
+        			filtered_list.append(word)
+
+
+
     return filtered_list
 
     
@@ -50,4 +58,4 @@ def normalise_input(user_input):
             word_list.append(word)
             word = ""
     word_list.append(word)
-    return filter_words(word_list, skip_words)
+    return filter_words(word_list, key_words)
