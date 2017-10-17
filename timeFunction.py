@@ -10,11 +10,5 @@ def getCurrentTime ():
 	Or time whilst fighting the zombies."""
 	return time.time()
 
-
-initTime = getCurrentTime() #this would be then time you enter x-ray room
-
-while True:
-	input ("press Enter: ")
-	currentTime = getCurrentTime()         #updates the current time
-	timeSinceInit = currentTime - initTime #this calcualtes the time since initial event
-	print(timeSinceInit)				   #prints the time
+def timeSince(initial, current):
+	return current - initial

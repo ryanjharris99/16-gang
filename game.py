@@ -4,6 +4,7 @@ from map import rooms
 from player import *
 from items import *
 from gameparser import *
+from timeFunction import *
 
 
 
@@ -202,12 +203,23 @@ def print_menu(exits, room_items, inv_items):
     What do you want to do?
 
     """
+    global energy
     print("You can:")
     # Iterate over available exits
     for direction in exits:
         # Print the exit name and where it leads to
         print_exit(direction, exit_leads_to(exits, direction))
-
+    print()
+    if energy > 16:
+        print("You are full of energy!\n")
+    elif energy > 12:
+        print("You are feeling okay!\n")
+    elif energy > 8:
+        print("You are starting to feel tired.\n")
+    elif energy > 4:
+        print("You are very tired.\n")
+    elif energy > 0:
+        print("You are about to faint, eat something!\n")
     #
     # COMPLETE ME!
     #
@@ -345,6 +357,9 @@ def move(exits, direction):
 
 # This is the entry point of our program
 def main():
+    global energy
+    gameStart = getCurrentTime() #time the game started
+    energyLossTime = getCurrentTime() #time since energy was last lost
 
     # Main game loop
     while True:
@@ -357,6 +372,10 @@ def main():
 
         # Execute the player's command
         execute_command(command)
+
+        if timeSince(energyLossTime, getCurrentTime()) > 15:
+            energy -= 1
+
 
 
 
