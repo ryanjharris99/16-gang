@@ -14,6 +14,7 @@ def getCurrentTime ():
 initTime = getCurrentTime() #this would be then time you enter x-ray room
 
 while True:
+	input ("press Enter: ")
 	currentTime = getCurrentTime()         #updates the current time
 	timeSinceInit = currentTime - initTime #this calcualtes the time since initial event
 	print(timeSinceInit)				   #prints the time
