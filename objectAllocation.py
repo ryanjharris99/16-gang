@@ -4,8 +4,6 @@ from random import randint
 def keyAlreadyExists(dictionary, testKey):
 	toReturn = False
 
-
-
 	for key in dictionary:
 		print(key)
 		if key == testKey:
@@ -26,38 +24,46 @@ def itemsToAllocate (items, places):
 	"""This function takes a list of items and a list of places.
 	"""
 	itemMap = {}
+	itemDict = {}
 
 	for i in range (0, len(items)):
+		itemDict = {}
+
 		itemToPlace = items[i]
 		itemAllocatedPlace = allocateLocation(places)
 		print("The " + itemToPlace + " is in " + itemAllocatedPlace + ".")
 
-		print(keyAlreadyExists(itemMap, itemAllocatedPlace))
-
 		if keyAlreadyExists(itemMap, itemAllocatedPlace) == False:
 
-			itemMap[itemAllocatedPlace] = [itemToPlace]
+			itemDict["0"] = [itemToPlace]
+
+			itemMap[itemAllocatedPlace] = itemDict
 
 		else: 
-			newList = list(itemMap[itemAllocatedPlace])
-			print(newList)
-			newList = newList.append(itemToPlace)
-			print(newList)
-			itemMap[itemAllocatedPlace] = newList
+			dictionaryLength = len(itemMap[itemAllocatedPlace])
+
+			itemDict[str(dictionaryLength)] = [itemToPlace]
+			
+			itemMap[itemAllocatedPlace] = itemDict
 
 
 	print()
 	return itemMap
 
+def dictionaryToList(dict):
+	toReturn = []
+
+	for key in dict:
+		toReturn.append(dict[key])
+
+	return toReturn
+
 
 
 examplePlaces = ["Left Cuboard","Right Cuboard","Desk Drawer", "Under Body",]
 
-itemsToPlace = ["Parachute Craft List", "Knife"]
+itemsToPlace = ["Parachute Craft List", "Knife", "Cheese Pasty"]
 
-d = {"Cheese": "Lovely"}
-
-print(keyAlreadyExists(d, "Cheese"))
 
 while True:				
 
@@ -65,6 +71,8 @@ while True:
 	input("Press Enter ")
 	print()
 	print(itemsToAllocate(itemsToPlace, examplePlaces))
+
+
 
 
 	
