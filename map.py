@@ -1,14 +1,19 @@
 from items import *
 
-room_reception = {
-    "name": "Hospital Room",
-
+room_reception={
+    "name" : "Reception",
+	
     "description":
-    """You are in a room""",
+    """    As you walk into reception you see bolted doors sealed with rusty bars plastered with "DO NOT ENTER" signs from the outside. 
+    You can see bloody handprints against the locked doors, pools of blood swimming with empty shells infront of them. 
+    There is a newspaper sat on the receptionist desk the only thing left not broken, kicked in or dripping in blood. 
+    The newspaper could explain what has happened to the town.
+    You hear footsteps from upstairs and splitting screams from distances outside.
+    """,
 
     "exits": {"south": "Admins", "east": "Tutor", "west": "Parking"},
 
-    "items": [item_biscuits, item_handbook]
+    "items": [item_newspaper, item_handbook]
 }
 
 room_admins = {

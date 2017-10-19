@@ -129,12 +129,15 @@ def print_room(room):
 
     Note: <BLANKLINE> here means that doctest should expect a blank line.
     """
+    global moved
     items = list_of_items(room["items"])
     # Display room name
     print("\n")
-    type_print(room["name"].upper())
-    # Display room description
-    type_print(room["description"])
+    if moved == True or moved == None: #If the player has moved
+        type_print(room["name"].upper())
+        # Display room description
+        type_print(room["description"])
+        moved = False
     if items != "":
         type_print("There is "  + items + " here.")
 
@@ -253,8 +256,10 @@ def execute_go(direction):
     moving). Otherwise, it prints "You cannot go there."
     """
     global current_room
+    global moved
     exits = (current_room["exits"])
     if is_valid_exit(exits, direction):
+        moved = True
         current_room = move(exits, direction)
 
 def execute_take(item_id):
@@ -282,6 +287,15 @@ def execute_drop(item_id):
         if item_id == item["id"]:
             inventory.remove(item)
             items_room.append(item)
+
+def execute_read(item_id):
+    """This function prints the description of a chosen item in the players inventory"
+    """
+    global inventory
+    items_room = current_room["items"]
+    for item in inventory:
+        if item_id == item["id"]:
+            type_print(item["description"])
     
 
 def execute_command(command):
@@ -312,6 +326,11 @@ def execute_command(command):
             execute_drop(command[1])
         else:
             type_print("Drop what?")
+    elif command[0] == "read" or command[0] == "inspect":
+        if len(command) > 1:
+            execute_read(command[1])
+        else:
+            type_print(command[0] + "what?")
 
     else:
         type_print("This makes no sense.")
@@ -352,6 +371,7 @@ def move(exits, direction):
     """
 
     # Next room to go to
+    moved = True
     return rooms[exits[direction]]
 
 def type_print(text):
@@ -359,7 +379,7 @@ def type_print(text):
     for c in text:
         sys.stdout.write( '%s' % c ) #https://stackoverflow.com/questions/9246076/how-to-print-one-character-at-a-time-on-one-line
         sys.stdout.flush()
-        time.sleep(0.05)
+        time.sleep(0.01)
     print("\n")
     winsound.PlaySound(None, winsound.SND_PURGE)
 

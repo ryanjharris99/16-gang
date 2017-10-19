@@ -26,12 +26,14 @@ item_money = {
     "This wad of cash is barely enough to pay your tuition fees."
 }
 
-item_biscuits = {
-    "id": "biscuits",
+item_newspaper = {
+    "id": "newspaper",
 
-    "name": "a pack of biscuits",
+    "name": "a newspaper",
 
-    "description": "A pack of biscuits."
+    "description": 
+
+    """HEADLINE: HYSTERIA IN THE HOSPITAL """
 }
 
 item_pen = {
@@ -50,4 +52,4 @@ item_handbook = {
     "description": "This student handbook explains everything. Seriously."
 }
 
-items_list = [item_handbook,item_pen, item_biscuits, item_money, item_laptop, item_id]
+items_list = [item_handbook,item_pen, item_newspaper, item_money, item_laptop, item_id]
