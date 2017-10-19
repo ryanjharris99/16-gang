@@ -5,6 +5,9 @@ from player import *
 from items import *
 from gameparser import *
 from timeFunction import *
+import time
+import sys
+import winsound
 
 
 
@@ -62,7 +65,7 @@ def print_room_items(room):
     """
     items_string = list_of_items(room["items"])
     if items_string != "":
-        print("There is " + items_string + " here.\n")
+        type_print("There is " + items_string + " here.\n")
 
 
 def print_inventory_items(items):
@@ -77,7 +80,7 @@ def print_inventory_items(items):
     """
     items_string = list_of_items(items)
     if items_string != "":
-        print("You have " + items_string + ".\n")
+        type_print("You have " + items_string + ".\n")
 
 
 def print_room(room):
@@ -128,15 +131,12 @@ def print_room(room):
     """
     items = list_of_items(room["items"])
     # Display room name
-    print()
-    print(room["name"].upper())
-    print()
+    print("\n")
+    type_print(room["name"].upper())
     # Display room description
-    print(room["description"])
-    print()
+    type_print(room["description"])
     if items != "":
-        print("There is "  + items + " here.")
-        print()
+        type_print("There is "  + items + " here.")
 
     #
     # COMPLETE ME!
@@ -170,7 +170,7 @@ def print_exit(direction, leads_to):
     >>> print_exit("south", "MJ and Simon's room")
     GO SOUTH to MJ and Simon's room.
     """
-    print("GO " + direction.upper() + " to " + leads_to + ".")
+    type_print("GO " + direction.upper() + " to " + leads_to + ".")
 
 
 def print_menu(exits, room_items, inv_items):
@@ -204,27 +204,27 @@ def print_menu(exits, room_items, inv_items):
 
     """
     global energy
-    print("You can:")
+    type_print("You can:")
     # Iterate over available exits
     for direction in exits:
         # Print the exit name and where it leads to
         print_exit(direction, exit_leads_to(exits, direction))
-    print()
+    print("")
     if energy > 16:
-        print("You are full of energy!\n")
+        type_print("You are full of energy!")
     elif energy > 12:
-        print("You are feeling okay!\n")
+        type_print("You are feeling okay!")
     elif energy > 8:
-        print("You are starting to feel tired.\n")
+        type_print("You are starting to feel tired.")
     elif energy > 4:
-        print("You are very tired.\n")
+        type_print("You are very tired.")
     elif energy > 0:
-        print("You are about to faint, eat something!\n")
+        type_print("You are about to faint, eat something!")
     #
     # COMPLETE ME!
     #
     
-    print("What do you want to do?")
+    type_print("What do you want to do?")
 
 
 def is_valid_exit(exits, chosen_exit):
@@ -299,22 +299,22 @@ def execute_command(command):
         if len(command) > 1:
             execute_go(command[1])
         else:
-            print("Go where?")
+            type_print("Go where?")
 
     elif command[0] == "take":
         if len(command) > 1:
             execute_take(command[1])
         else:
-            print("Take what?")
+            type_print("Take what?")
 
     elif command[0] == "drop":
         if len(command) > 1:
             execute_drop(command[1])
         else:
-            print("Drop what?")
+            type_print("Drop what?")
 
     else:
-        print("This makes no sense.")
+        type_print("This makes no sense.")
 
 
 def menu(exits, room_items, inv_items):
@@ -353,6 +353,15 @@ def move(exits, direction):
 
     # Next room to go to
     return rooms[exits[direction]]
+
+def type_print(text):
+    winsound.PlaySound('typing.wav', winsound.SND_ASYNC)
+    for c in text:
+        sys.stdout.write( '%s' % c ) #https://stackoverflow.com/questions/9246076/how-to-print-one-character-at-a-time-on-one-line
+        sys.stdout.flush()
+        time.sleep(0.05)
+    print("\n")
+    winsound.PlaySound(None, winsound.SND_PURGE)
 
 
 # This is the entry point of our program
