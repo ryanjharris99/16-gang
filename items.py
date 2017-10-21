@@ -25,5 +25,13 @@ item_patients_gown = {
     "description": "A basic patients gown to keep you warm"
 }
 
+item_card = {
+    "id": "card",
+    
+    "name": "a get well soon card",
 
-items_list = [item_pen, item_newspaper]
+    "description": "A get well soon card written to you by your family"
+}
+
+
+items_list = [item_pen, item_newspaper, item_patients_gown, item_card]

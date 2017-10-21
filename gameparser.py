@@ -1,8 +1,10 @@
 import string
 import items
+import containers
 
-# List of "unimportant" words (feel free to add more)
-key_words = ["go", "south", "north", "west", "east", "take", "drop", "read", "hit", "inspect", "left", "right", "up", "down"]
+# List of key words (feel free to add more)
+key_words = ["go", "south", "north", "west", "east", "take", "drop", "read", "hit", "inspect", "left", "right", "up", "down"
+            ,"search", "boxes", "desk", "machine"]
 
 
 def filter_words(words, key_words):
@@ -14,10 +16,12 @@ def filter_words(words, key_words):
     for word in words:
         if word.lower() in key_words:
             filtered_list.append(word)
-        else:
-        	for item in items.items_list:
-        		if word.lower() == item["id"]:
-        			filtered_list.append(word)
+        for item in items.items_list:
+        	if word.lower() == item["id"]:
+        		filtered_list.append(word)
+        for container in containers.containers_list:
+            if word.lower() == container["id"]:
+                filtered_list.append(word)
 
 
 

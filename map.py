@@ -1,4 +1,5 @@
 from items import *
+from containers import *
 
 room_OT={
 	"name": "Operating Theatre",
@@ -124,7 +125,7 @@ room_PatientRoom={
 
 	"items": [],
 
-	"containers": []
+	"containers": [container_gift, container_desk]
 }
 
 rooms ={

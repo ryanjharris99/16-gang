@@ -5,6 +5,7 @@ from player import *
 from items import *
 from gameparser import *
 from timeFunction import *
+from containers import *
 import time
 import sys
 import winsound
@@ -24,8 +25,17 @@ def list_of_items(items):
         else:
             item_list += item["name"]
     return item_list
-        
-        
+
+def list_of_containers(containers):     
+    """This function takes a list of containers and returns a string of them"""
+    container_list = ""
+    for item in containers:
+        if container_list != "":
+            container_list += ", "
+            container_list += item["name"]
+        else:
+            container_list += item["name"]
+    return container_list
         
 
 
@@ -40,6 +50,13 @@ def print_room_items(room):
     items_string = list_of_items(room["items"])
     if items_string != "":
         type_print("There is " + items_string + " here.\n")
+
+def print_containers(room):
+    """This function prints all of the containers in a given room"""
+    containers_string = list_of_containers(room["containers"])
+    if containers_string != "":
+        type_print("You could search " + containers_string + ".\n")
+
 
 
 def print_inventory_items(items):
@@ -63,6 +80,7 @@ def print_room(room):
     """
     global moved
     items = list_of_items(room["items"])
+    containers = list_of_containers(room["containers"])
     # Display room name
     print("\n")
     if moved == True or moved == None: #If the player has moved
@@ -72,10 +90,8 @@ def print_room(room):
         moved = False
     if items != "":
         type_print("There is "  + items + " here.")
-
-    #
-    # COMPLETE ME!
-    #
+    if containers != "":
+        type_print("You can search " + containers + ".\n")
 
 def exit_leads_to(exits, direction):
     """This function takes a dictionary of exits and a direction (a particular
@@ -187,6 +203,21 @@ def execute_read(item_id):
     for item in inventory:
         if item_id == item["id"]:
             type_print(item["description"])
+
+def execute_search(container_id):
+    """This function searches a given container and adds any items in it to the 
+    player's inventory"""
+    global inventory
+    containers_room = current_room["containers"]
+    for item in containers_room:
+        if container_id == item["id"]:
+            if len(item["items"]) != 0:
+                for items in item["items"]:
+                    type_print("You found a " + items["name"] + ".\n")
+                    inventory.append(items)
+            else:
+                type_print("The " + item[""] + " was empty.\n")
+            current_room["containers"].remove(item)
     
 
 def execute_command(command):
@@ -221,7 +252,12 @@ def execute_command(command):
         if len(command) > 1:
             execute_read(command[1])
         else:
-            type_print(command[0] + "what?")
+            type_print(command[0] + " what?")
+    elif command[0] == "search":
+        if len(command) > 1:
+            execute_search(command[1])
+        else:
+            type_print("Search what?")
 
     else:
         type_print("This makes no sense.")
@@ -286,7 +322,7 @@ def main():
         # Execute the player's command
         execute_command(command)
 
-        if timeSince(energyLossTime, getCurrentTime()) > 15:
+        if timeSince(energyLossTime, getCurrentTime()) > 60:
             energy -= 1
 
 
