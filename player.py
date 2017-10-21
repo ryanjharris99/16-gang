@@ -1,9 +1,9 @@
 from items import *
 from map import rooms
 
-inventory = [item_id, item_laptop, item_money]
+inventory = [item_patients_gown]
 energy = 20 #The energy level of the player
 moved = True #Did the player move room last turn
 
 # Start game at the reception
-current_room = rooms["Reception"]
+current_room = rooms["Patient_Room"]
