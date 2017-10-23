@@ -87,7 +87,7 @@ room_attic={
 
 	"items": [item_atticNote2, item_atticNote, item_rope],
 
-	"containers": {"Left Cuboard": [],"Right Cuboard": [],"Desk Drawer": [], "Under Body":[], }
+	"containers": {"cupboard": [],"machine": [],"boxes": []}
 
 }
 
@@ -101,7 +101,7 @@ room_morgue={
 
 	"items": [],
 
-	"containers": {"Left Cuboard": [],"Right Cuboard": [],"Desk Drawer": [], "Under Body":[], }
+	"containers": {"cupboard": [],"drawers": [], "refrigerator":[]}
 }
 
 room_ChildrenWard={
@@ -114,7 +114,7 @@ room_ChildrenWard={
 
 	"items": [item_drink, item_wardNote],
 
-	"containers": {"Left Cuboard": [],"Right Cuboard": [],"Desk Drawer": [], "Under Body":[], }
+	"containers": {"bed": [],"toybox": [],"drawers": []}
 
 }
 
