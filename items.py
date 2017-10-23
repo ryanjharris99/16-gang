@@ -86,8 +86,8 @@ item_rope = {
     "description": "a thick, dusty rope probably left over from the renovation of the hospital"
 }
 
-item_unloadedgun = {
-    "id":"unloaded_gun",
+item_gun = {
+    "id":"gun",
 
     "name": "a classic pistol",
 
@@ -115,7 +115,7 @@ item_bullets = {
 item_xrayNote = {
     "id": "xray_note",
 
-    "name": "Note found!",
+    "name": "xray note",
 
     "recipe": [],
 
@@ -127,7 +127,7 @@ item_xrayNote = {
 item_atticNote = {
     "id": "attic_note",
 
-    "name": "Note found!",
+    "name": "Attic note",
 
     "recipe": [],
 
@@ -139,7 +139,7 @@ item_atticNote = {
 item_atticNote2 = {
     "id": "attic_note2",
 
-    "name": "Note found!",
+    "name": "Attic note_2",
 
     "recipe": [],
 
@@ -152,7 +152,7 @@ item_atticNote2 = {
 item_wardNote = {
     "id": "Ward_note",
 
-    "name": "Note found!",
+    "name": "Children ward note",
 
     "recipe": [],
 
@@ -164,7 +164,7 @@ item_wardNote = {
 item_WaitingNote = {
     "id": "Waiting_note",
 
-    "name": "Note found!",
+    "name": "Waiting room note",
 
     "recipe": [],
 
@@ -180,7 +180,7 @@ item_drink = {
 
     "recipe": [],
 
-    "energy": "35",
+    "energy": "35cb",
 
     "description": "Yay! you have found an energy drink"
 }
