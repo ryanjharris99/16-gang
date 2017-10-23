@@ -14,9 +14,9 @@ room_OT={
 
 	 "exits": {"left":"Patient_Room", "right":"Xray"},
 
-	 "items": [],
+	 "items": [item_bedsheet, item_suture, ],
 
-	 "containers": []
+	 "containers": {"Surgical Cuboard": [],"Cuboard In The Corner": [],"Chest Of THe Corpse": [], "Under Body":[], }
 
 }
 
@@ -28,9 +28,9 @@ room_Waiting={
 
 	"exits": {"right":"Reception", "left":"Patient_Room"},
 
-	"items": [],
+	"items": [item_fruit, item_WaitingNote, item_gun],
 
-	"containers": []
+	"containers": {"Left Cuboard": [], }  
 	
 }
 
@@ -48,9 +48,9 @@ room_Xray={
 
 	"exits": {"left":"OT"},
 
-	"items": [],
+	"items": [item_xrayNote],
 
-	"containers": []
+	"containers": {"Left Cuboard": [],"Right Cuboard": [],"Desk Drawer": [], "Under Body":[], }
 }
 
 room_reception={
@@ -65,14 +65,15 @@ room_reception={
 
 	"exits": {"left":"Waiting_Room", "right":"Children_Ward"},
 
-	"items": [item_newspaper],
+	"items": [item_newspaper, item_chocolate, item_bullets],
 
-	"containers": []
+	"containers": {"Left Cuboard": [],"Right Cuboard": [],"Desk Drawer": [], "Under Body":[], }
 
 
 }
 
 room_attic={
+
 	"name": "Attic",
 
 	"description": 
@@ -83,9 +84,10 @@ room_attic={
 
 	"exits": {"down":"Children_Ward"},
 
-	"items": [],
+	"items": [item_atticNote2, item_atticNote, item_rope],
 
-	"containers": []
+	"containers": {"Left Cuboard": [],"Right Cuboard": [],"Desk Drawer": [], "Under Body":[], }
+
 }
 
 room_morgue={
@@ -98,7 +100,7 @@ room_morgue={
 
 	"items": [],
 
-	"containers": []
+	"containers": {"Left Cuboard": [],"Right Cuboard": [],"Desk Drawer": [], "Under Body":[], }
 }
 
 room_ChildrenWard={
@@ -109,9 +111,9 @@ room_ChildrenWard={
 
 	"exits": {"up":"Attic", "left":"Reception"},
 
-	"items": [],
+	"items": [item_drink, item_wardNote],
 
-	"containers": []
+	"containers": {"Left Cuboard": [],"Right Cuboard": [],"Desk Drawer": [], "Under Body":[], }
 
 }
 
@@ -125,7 +127,7 @@ room_PatientRoom={
 
 	"items": [],
 
-	"containers": [container_gift, container_desk]
+	"containers": {"Left Cuboard": [],"Right Cuboard": [],"Desk Drawer": [], "Under Body":[], }
 }
 
 rooms ={
