@@ -12,7 +12,8 @@ import sys
 import platform
 if platform.system() == "Windows":
     import winsound
-
+import os 
+dir_sounds = os.path.dirname(os.path.realpath(__file__)) + "\sounds\\"
 
 
 def list_of_items(items):
@@ -338,11 +339,11 @@ def move(exits, direction):
 
 def type_print(text):
     if platform.system() == "Windows":
-        winsound.PlaySound("sounds:\\typing.wav", winsound.SND_ASYNC)
+        winsound.PlaySound(dir_sounds + "typing.wav" ,winsound.SND_FILENAME | winsound.SND_ASYNC)
     for c in text:
         sys.stdout.write( '%s' % c ) #https://stackoverflow.com/questions/9246076/how-to-print-one-character-at-a-time-on-one-line
         sys.stdout.flush()
-        time.sleep(0)
+        time.sleep(0.01)
     print("\n")  
     if platform.system() == "Windows":
         winsound.PlaySound(None, winsound.SND_PURGE)
