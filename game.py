@@ -191,7 +191,10 @@ def execute_search(container_id):
                     type_print("You found a " + items["name"] + ".\n")
                     inventory.append(items)
             else:
-                type_print("The " + item + " was empty.\n")
+                if item[-1] == "s":
+                    type_print("The " + item + " were empty.\n")
+                else:
+                    type_print("The " + item + " was empty.\n")
         to_delete = item
     del current_room["containers"][to_delete]
     
