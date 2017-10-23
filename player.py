@@ -1,7 +1,7 @@
 from items import *
 from map import rooms
 
-inventory = [item_patients_gown]
+inventory = [item_rope, item_suture, item_patients_gown, item_bedsheet]
 energy = 20 #The energy level of the player
 moved = True #Did the player move room last turn
 

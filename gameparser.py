@@ -4,7 +4,7 @@ import containers
 
 # List of key words (feel free to add more)
 key_words = ["go", "south", "north", "west", "east", "take", "drop", "read", "hit", "inspect", "left", "right", "up", "down"
-            ,"search", "boxes", "desk", "machine"]
+            ,"search", "boxes", "desk", "machine", "combine", "craft"]
 
 
 def filter_words(words, key_words):

@@ -50,7 +50,12 @@ room_Xray={
 
 	"items": [item_xrayNote],
 
+<<<<<<< HEAD
 	"containers": {"Left Cuboard": [],"Right Cuboard": [],"Desk Drawer": [], "Under Body":[], }
+=======
+	"containers": []
+
+>>>>>>> 37e2779d2ad9bff49d15fd46e8266cecce772f5e
 }
 
 room_reception={
