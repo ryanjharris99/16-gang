@@ -1,6 +1,5 @@
 import string
 import items
-import containers
 
 # List of key words (feel free to add more)
 skip_words = ['a', 'about', 'all', 'an', 'another', 'any', 'around', 'at',

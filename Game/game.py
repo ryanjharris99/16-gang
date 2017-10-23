@@ -5,8 +5,8 @@ from player import *
 from items import *
 from gameparser import *
 from timeFunction import *
-from containers import *
 from objectAllocation import *
+from mainMenu import *
 import time
 import sys
 import platform
@@ -14,6 +14,8 @@ if platform.system() == "Windows":
     import winsound
 import os 
 dir_sounds = os.path.dirname(os.path.realpath(__file__)) + "\sounds\\"
+
+difficulty = ""
 
 
 def list_of_items(items):
@@ -264,7 +266,7 @@ def execute_command(command):
         else:
             type_print("Combine what?")
     else:
-        type_print("This makes no sense.")
+        type_print("What?")
 
 
 def menu(exits, room_items, inv_items):
@@ -343,7 +345,7 @@ def type_print(text):
     for c in text:
         sys.stdout.write( '%s' % c ) #https://stackoverflow.com/questions/9246076/how-to-print-one-character-at-a-time-on-one-line
         sys.stdout.flush()
-        time.sleep(0.01)
+        time.sleep(0.02)
     print("\n")  
     if platform.system() == "Windows":
         winsound.PlaySound(None, winsound.SND_PURGE)
@@ -378,5 +380,5 @@ def main():
 # '__main__' is the name of the scope in which top-level code executes.
 # See https://docs.python.org/3.4/library/__main__.html for explanation
 if __name__ == "__main__":
-    main()
+    main_menu()
 

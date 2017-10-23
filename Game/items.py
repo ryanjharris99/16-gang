@@ -195,21 +195,21 @@ item_drink = {
 
     "recipe": [],
 
-    "energy": "35",
+    "energy": "20",
 
-    "description": "Yay! you have found an energy drink"
+    "description": "The fuel of programmers"
 }
 
 item_chocolate = {
-    "id": "chocolate",
+    "id": "Chocolate",
 
     "name": "chocolate bar",
 
     "recipe": [],
 
-    "energy": "20",
+    "energy": "10",
 
-    "description": "yay! you have found a chocolate bar"
+    "description": "A packaged chocolate bar, your favourite kind too"
 }
 
 item_fruit = {

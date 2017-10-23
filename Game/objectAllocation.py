@@ -5,7 +5,6 @@ from player import *
 from items import *
 from gameparser import *
 from timeFunction import *
-from containers import *
 import time
 import sys
 
