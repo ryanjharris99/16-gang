@@ -196,7 +196,8 @@ def execute_search(container_id):
                 else:
                     type_print("The " + item + " was empty.\n")
             to_delete = item
-    del current_room["containers"][to_delete]
+    if to_delete != None:
+        del current_room["containers"][to_delete]
     
 
 def execute_command(command):
