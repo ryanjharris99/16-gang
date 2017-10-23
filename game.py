@@ -320,7 +320,6 @@ def finding_crafting_items(user_input):
 
 def crafting(Items):
 
-    print("Length of items that we are crafting with" + str(len(Items)))
     if(len(Items) != 0):
         for item in items_list:
 

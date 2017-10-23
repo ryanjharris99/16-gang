@@ -224,9 +224,21 @@ item_fruit = {
     "description": "Doesn't look the freshest but should do.. "
 }
 
+item_parachute = {
+    "id": "parachute",
+
+    "name": "a parachute",
+
+    "recipe": [item_rope, item_suture, item_patients_gown, item_bedsheet],
+
+    "energy": "0",
+
+    "description": "A parachute made from bedsheets, will this work? who knows!"
+}
 
 
 
 
 
-items_list = [item_pen, item_newspaper, item_patients_gown, item_card, item_bedsheet, item_suture, item_rope, item_gun, item_bullets ,item_xrayNote, item_atticNote, item_atticNote2, item_wardNote, item_WaitingNote, item_drink, item_chocolate, item_fruit, item_loadedgun]
+
+items_list = [item_pen, item_newspaper, item_patients_gown, item_card, item_bedsheet, item_suture, item_rope, item_gun, item_bullets ,item_xrayNote, item_atticNote, item_atticNote2, item_wardNote, item_WaitingNote, item_drink, item_chocolate, item_fruit, item_loadedgun,item_parachute]
