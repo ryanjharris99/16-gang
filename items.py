@@ -180,7 +180,7 @@ item_drink = {
 
     "recipe": [],
 
-    "energy": "35cb",
+    "energy": "35",
 
     "description": "Yay! you have found an energy drink"
 }
