@@ -97,11 +97,7 @@ def initiateRooms ():
     roomsList = dictToListFull(rooms)    
 
     for i in range (0, len(roomsList)):
-        print()
-        print(roomsList[i])
-        print()
         itemsToContainers(roomsList[i])
-        displayContainerItems(roomsList[i])
 
     #print(rooms["OT"]["containers"])
 
