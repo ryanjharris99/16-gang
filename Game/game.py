@@ -278,6 +278,7 @@ def menu(exits, room_items, inv_items):
 
     # Read player's input
     user_input = input("> ")
+    print()
 
     # Normalise the input
     normalised_user_input = normalise_input(user_input)
@@ -334,7 +335,7 @@ def move(exits, direction):
     return rooms[exits[direction]]
 
 def type_print(text):
-    winsound.PlaySound('typing.wav', winsound.SND_ASYNC)
+    winsound.PlaySound("sounds:\\typing.wav", winsound.SND_ASYNC)
     for c in text:
         sys.stdout.write( '%s' % c ) #https://stackoverflow.com/questions/9246076/how-to-print-one-character-at-a-time-on-one-line
         sys.stdout.flush()
