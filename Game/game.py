@@ -9,7 +9,9 @@ from containers import *
 from objectAllocation import *
 import time
 import sys
-import winsound
+import platform
+if platform.system() == "Windows":
+    import winsound
 
 
 
@@ -335,13 +337,15 @@ def move(exits, direction):
     return rooms[exits[direction]]
 
 def type_print(text):
-    winsound.PlaySound("sounds:\\typing.wav", winsound.SND_ASYNC)
+    if platform.system() == "Windows":
+        winsound.PlaySound("sounds:\\typing.wav", winsound.SND_ASYNC)
     for c in text:
         sys.stdout.write( '%s' % c ) #https://stackoverflow.com/questions/9246076/how-to-print-one-character-at-a-time-on-one-line
         sys.stdout.flush()
         time.sleep(0)
-    print("\n")
-    winsound.PlaySound(None, winsound.SND_PURGE)
+    print("\n")  
+    if platform.system() == "Windows":
+        winsound.PlaySound(None, winsound.SND_PURGE)
 
 
 # This is the entry point of our program
