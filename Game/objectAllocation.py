@@ -8,7 +8,6 @@ from timeFunction import *
 from containers import *
 import time
 import sys
-import winsound
 
 def keyAlreadyExists(dictionary, testKey):
 	toReturn = False
