@@ -100,6 +100,8 @@ item_gun = {
 
 
 
+
+
 item_bullets = {
     "id": "bullets",
 
@@ -110,6 +112,19 @@ item_bullets = {
     "energy": "0",
 
     "description": "a bunch of bullets scattered on the floor, there must be a gun around somewhere..."
+}
+
+item_loadedgun = {
+    
+    "id":"gun_loaded",
+
+    "name": "a classic pistol, loaded",
+
+    "recipe": [item_gun, item_bullets],
+
+    "energy": "0",
+
+    "description": "Shiny and deadly"
 }
 
 item_xrayNote = {
@@ -214,4 +229,4 @@ item_fruit = {
 
 
 
-items_list = [item_pen, item_newspaper, item_patients_gown, item_card, item_bedsheet, item_suture, item_rope, item_gun, item_bullets ,item_xrayNote, item_atticNote, item_atticNote2, item_wardNote, item_WaitingNote, item_drink, item_chocolate, item_fruit]
+items_list = [item_pen, item_newspaper, item_patients_gown, item_card, item_bedsheet, item_suture, item_rope, item_gun, item_bullets ,item_xrayNote, item_atticNote, item_atticNote2, item_wardNote, item_WaitingNote, item_drink, item_chocolate, item_fruit, item_loadedgun]

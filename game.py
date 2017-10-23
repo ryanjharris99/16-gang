@@ -96,7 +96,7 @@ def print_room(room):
 def exit_leads_to(exits, direction):
     """This function takes a dictionary of exits and a direction (a particular
     exit taken from this dictionary). It returns the name of the room into which
-    this exit leads.
+    this exit leads
     """
     return rooms[exits[direction]]["name"]
 
@@ -258,7 +258,27 @@ def execute_command(command):
             execute_search(command[1])
         else:
             type_print("Search what?")
+    elif command[0] == "combine" or command[0] == "craft":
+        if(len(command) > 1):
+            user_input = []
+            for word in command:
+                if word != "combine":
+                    user_input.append(word)
 
+            CraftedItem = crafting(finding_crafting_items(user_input))
+
+            if(CraftedItem != None):
+                type_print("\n" + "You have crafted: " + CraftedItem["name"])
+                global inventory
+
+                inventory.append(CraftedItem)
+                foundItems = finding_crafting_items(user_input)
+                for item in foundItems:
+                    inventory.remove(item)
+            else:
+                type_print("You can't craft anything with these")
+        else:
+            type_print("Combine what?")
     else:
         type_print("This makes no sense.")
 
@@ -282,6 +302,45 @@ def menu(exits, room_items, inv_items):
     normalised_user_input = normalise_input(user_input)
 
     return normalised_user_input
+
+def finding_crafting_items(user_input):
+    global inventory
+
+    Items = []
+
+    for word in user_input:
+        for item in inventory:
+            if (item["id"] == word):
+                Items.append(item)
+
+
+    return Items
+
+
+
+def crafting(Items):
+
+    print("Length of items that we are crafting with" + str(len(Items)))
+    if(len(Items) != 0):
+        for item in items_list:
+
+            if(len(item["recipe"]) != 0):
+
+
+                Item_number = 0
+                for item2 in Items:
+                    if (item2 in item["recipe"]):
+                        Item_number += 1
+
+                if(Item_number == len(item["recipe"])):
+                    return item
+                
+
+
+        return None    
+
+    else:
+        return None
 
 
 def move(exits, direction):

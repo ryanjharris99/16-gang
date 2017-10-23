@@ -51,6 +51,7 @@ room_Xray={
 	"items": [],
 
 	"containers": []
+
 }
 
 room_reception={
