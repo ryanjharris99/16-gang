@@ -1,7 +1,7 @@
 item_newspaper = {
     "id": "newspaper",
 
-    "name": "a newspaper",
+    "name": "A newspaper",
 
     "recipe": [],
 
@@ -16,7 +16,7 @@ item_newspaper = {
 item_pen = {
     "id": "pen",
     
-    "name": "a pen",
+    "name": "A pen",
 
     "recipe": [],
 
@@ -29,7 +29,7 @@ item_pen = {
 item_patients_gown = {
     "id": "gown",
     
-    "name": "a patients gown",
+    "name": "A patients gown",
 
     "recipe": [],
 
@@ -41,7 +41,7 @@ item_patients_gown = {
 item_card = {
     "id": "card",
     
-    "name": "a get well soon card",
+    "name": "A get well soon card",
 
     "recipe": [],
 
@@ -53,19 +53,19 @@ item_card = {
 item_bedsheet = {
     "id": "bedsheet",
 
-    "name": "surgical bedsheets",
+    "name": "Surgical bedsheets",
 
     "recipe": [],
 
     "energy": "0",
 
-    "description": "a pile of bloody bedsheets"
+    "description": "A pile of bloody bedsheets"
 }
 
 item_suture = {
     "id": "suture",
 
-    "name": "surgical suture kit",
+    "name": "Surgical suture kit",
 
     "recipe": [],
 
@@ -77,7 +77,7 @@ item_suture = {
 item_rope = {
     "id": "rope",
 
-    "name": "a pile of rope",
+    "name": "A pile of rope",
 
     "recipe": [],
 
@@ -89,7 +89,7 @@ item_rope = {
 item_gun = {
     "id":"gun",
 
-    "name": "a classic pistol",
+    "name": "A classic pistol",
 
     "recipe": [],
 
@@ -105,7 +105,7 @@ item_gun = {
 item_bullets = {
     "id": "bullets",
 
-    "name": "a bunch of bullets",
+    "name": "A bunch of bullets",
 
     "recipe": [],
 
@@ -118,7 +118,7 @@ item_loadedgun = {
     
     "id":"gun_loaded",
 
-    "name": "a classic pistol, loaded",
+    "name": "A classic pistol, loaded",
 
     "recipe": [item_gun, item_bullets],
 
@@ -130,7 +130,7 @@ item_loadedgun = {
 item_xrayNote = {
     "id": "xray_note",
 
-    "name": "xray note",
+    "name": "Xray note",
 
     "recipe": [],
 
@@ -154,7 +154,7 @@ item_atticNote = {
 item_atticNote2 = {
     "id": "attic_note2",
 
-    "name": "Attic note_2",
+    "name": "Attic note 2",
 
     "recipe": [],
 
@@ -165,7 +165,7 @@ item_atticNote2 = {
 }
 
 item_wardNote = {
-    "id": "Ward_note",
+    "id": "ward_note",
 
     "name": "Children ward note",
 
@@ -189,7 +189,7 @@ item_WaitingNote = {
 }
 
 item_drink = {
-    "id": "Drink",
+    "id": "drink",
 
     "name": "Energy drink",
 
@@ -213,7 +213,7 @@ item_chocolate = {
 }
 
 item_fruit = {
-    "id": "Fruit",
+    "id": "fruit",
 
     "name": "An apple",
 

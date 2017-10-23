@@ -3,25 +3,26 @@ import items
 import containers
 
 # List of key words (feel free to add more)
-key_words = ["go", "south", "north", "west", "east", "take", "drop", "read", "hit", "inspect", "left", "right", "up", "down"
-            ,"search", "boxes", "desk", "machine", "combine", "craft"]
+skip_words = ['a', 'about', 'all', 'an', 'another', 'any', 'around', 'at',
+              'bad', 'beautiful', 'been', 'better', 'big', 'can', 'every', 'for',
+              'from', 'good', 'have', 'her', 'here', 'hers', 'his', 'how',
+              'i', 'if', 'in', 'into', 'is', 'it', 'its', 'large', 'later',
+              'like', 'little', 'main', 'me', 'mine', 'more', 'my', 'now',
+              'of', 'off', 'oh', 'on', 'please', 'small', 'some', 'soon',
+              'that', 'the', 'then', 'this', 'those', 'through', 'till', 'to',
+              'towards', 'until', 'us', 'want', 'we', 'what', 'when', 'why',
+              'wish', 'with', 'would']
 
 
-def filter_words(words, key_words):
+def filter_words(words, skip_words):
     """This function takes a list of words and returns a copy of the list from
     which all words provided in the list key_words have been removed.
     For example:
     """
     filtered_list = []
     for word in words:
-        if word.lower() in key_words:
+        if word.lower() not in skip_words:
             filtered_list.append(word)
-        for item in items.items_list:
-        	if word.lower() == item["id"]:
-        		filtered_list.append(word)
-        for container in containers.containers_list:
-            if word.lower() == container["id"]:
-                filtered_list.append(word)
 
 
 
@@ -62,4 +63,4 @@ def normalise_input(user_input):
             word_list.append(word)
             word = ""
     word_list.append(word)
-    return filter_words(word_list, key_words)
+    return filter_words(word_list, skip_words)

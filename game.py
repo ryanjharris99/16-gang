@@ -6,6 +6,7 @@ from items import *
 from gameparser import *
 from timeFunction import *
 from containers import *
+from objectAllocation import *
 import time
 import sys
 import winsound
@@ -25,37 +26,11 @@ def list_of_items(items):
         else:
             item_list += item["name"]
     return item_list
-
-def list_of_containers(containers):     
-    """This function takes a list of containers and returns a string of them"""
-    container_list = ""
-    for item in containers:
-        if container_list != "":
-            container_list += ", "
-            container_list += item["name"]
-        else:
-            container_list += item["name"]
-    return container_list
         
 
-
-def print_room_items(room):
-    """This function takes a room as an input and nicely displays a list of items
-    found in this room (followed by a blank line). If there are no items in
-    the room, nothing is printed. See map.py for the definition of a room, and
-    items.py for the definition of an item. This function uses list_of_items()
-    to produce a comma-separated list of item names.
-
-    """
-    items_string = list_of_items(room["items"])
-    if items_string != "":
-        type_print("There is " + items_string + " here.\n")
-
-def print_containers(room):
+def print_containers(container):
     """This function prints all of the containers in a given room"""
-    containers_string = list_of_containers(room["containers"])
-    if containers_string != "":
-        type_print("You could search " + containers_string + ".\n")
+    type_print("SEARCH the " + container + ".")
 
 
 
@@ -66,7 +41,9 @@ def print_inventory_items(items):
     """
     items_string = list_of_items(items)
     if items_string != "":
-        type_print("You have " + items_string + ".\n")
+        type_print("INVENTORY:\n")
+        for item in items:
+            type_print(" - " + item["name"])
 
 
 def print_room(room):
@@ -79,8 +56,6 @@ def print_room(room):
     (use print_room_items() for this). For example:
     """
     global moved
-    items = list_of_items(room["items"])
-    containers = list_of_containers(room["containers"])
     # Display room name
     print("\n")
     if moved == True or moved == None: #If the player has moved
@@ -88,10 +63,6 @@ def print_room(room):
         # Display room description
         type_print(room["description"])
         moved = False
-    if items != "":
-        type_print("There is "  + items + " here.")
-    if containers != "":
-        type_print("You can search " + containers + ".\n")
 
 def exit_leads_to(exits, direction):
     """This function takes a dictionary of exits and a direction (a particular
@@ -128,6 +99,8 @@ def print_menu(exits, room_items, inv_items):
     for direction in exits:
         # Print the exit name and where it leads to
         print_exit(direction, exit_leads_to(exits, direction))
+    for container in current_room["containers"]:
+        print_containers(container)
     print("")
     if energy > 16:
         type_print("You are full of energy!")
@@ -209,15 +182,18 @@ def execute_search(container_id):
     player's inventory"""
     global inventory
     containers_room = current_room["containers"]
+    list_of_containers = []
     for item in containers_room:
-        if container_id == item["id"]:
-            if len(item["items"]) != 0:
-                for items in item["items"]:
+        list_of_containers.append(item)
+        if container_id == item:
+            if len(containers_room[container_id]) != 0:
+                for items in current_room["containers"][container_id]:
                     type_print("You found a " + items["name"] + ".\n")
                     inventory.append(items)
             else:
-                type_print("The " + item[""] + " was empty.\n")
-            current_room["containers"].remove(item)
+                type_print("The " + item + " was empty.\n")
+        to_delete = item
+    del current_room["containers"][to_delete]
     
 
 def execute_command(command):
@@ -357,7 +333,7 @@ def type_print(text):
     for c in text:
         sys.stdout.write( '%s' % c ) #https://stackoverflow.com/questions/9246076/how-to-print-one-character-at-a-time-on-one-line
         sys.stdout.flush()
-        time.sleep(0.01)
+        time.sleep(0)
     print("\n")
     winsound.PlaySound(None, winsound.SND_PURGE)
 
@@ -367,6 +343,7 @@ def main():
     global energy
     gameStart = getCurrentTime() #time the game started
     energyLossTime = getCurrentTime() #time since energy was last lost
+    initiateRooms()
 
     # Main game loop
     while True:

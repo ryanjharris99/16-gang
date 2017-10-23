@@ -16,7 +16,7 @@ room_OT={
 
 	 "items": [item_bedsheet, item_suture, ],
 
-	 "containers": {"Surgical Cuboard": [],"Cuboard In The Corner": [],"Chest Of THe Corpse": [], "Under Body":[], }
+	 "containers": {"tray": [],"cupboard": [],"corpse": [], "table":[], }
 
 }
 
@@ -30,7 +30,7 @@ room_Waiting={
 
 	"items": [item_fruit, item_WaitingNote, item_gun],
 
-	"containers": {"Left Cuboard": [], }  
+	"containers": {"cupboard": [], }  
 	
 }
 
@@ -50,12 +50,8 @@ room_Xray={
 
 	"items": [item_xrayNote],
 
-<<<<<<< HEAD
-	"containers": {"Left Cuboard": [],"Right Cuboard": [],"Desk Drawer": [], "Under Body":[], }
-=======
-	"containers": []
+	"containers": {"cupboard": [],"desk": [], "body":[], }
 
->>>>>>> 37e2779d2ad9bff49d15fd46e8266cecce772f5e
 }
 
 room_reception={
@@ -72,7 +68,7 @@ room_reception={
 
 	"items": [item_newspaper, item_chocolate, item_bullets],
 
-	"containers": {"Left Cuboard": [],"Right Cuboard": [],"Desk Drawer": [], "Under Body":[], }
+	"containers": {"cupboard": [],"desk": []}
 
 
 }
@@ -132,7 +128,7 @@ room_PatientRoom={
 
 	"items": [],
 
-	"containers": {"Left Cuboard": [],"Right Cuboard": [],"Desk Drawer": [], "Under Body":[], }
+	"containers": {"drawers": [], "bed":[], }
 }
 
 rooms ={
