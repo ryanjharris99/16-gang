@@ -183,6 +183,7 @@ def execute_search(container_id):
     global inventory
     containers_room = current_room["containers"]
     list_of_containers = []
+    to_delete = ""
     for item in containers_room:
         list_of_containers.append(item)
         if container_id == item:
@@ -196,7 +197,7 @@ def execute_search(container_id):
                 else:
                     type_print("The " + item + " was empty.\n")
             to_delete = item
-    if to_delete != None:
+    if to_delete != "":
         del current_room["containers"][to_delete]
     
 
