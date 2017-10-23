@@ -1,15 +1,47 @@
 #This program returns where the object will be randomly spawaned ina  list of places
 from random import randint
+from map import rooms
+from player import *
+from items import *
+from gameparser import *
+from timeFunction import *
+from containers import *
+import time
+import sys
+import winsound
 
 def keyAlreadyExists(dictionary, testKey):
 	toReturn = False
 
 	for key in dictionary:
-		print(key)
+		#print(key)
 		if key == testKey:
 			toReturn = True
 
 	return toReturn
+
+
+def dictToLongList (dictionaryList):
+	dictlist = []
+	for key, value in dictionaryList.items():
+		temp = [key,value]
+		dictlist.append(temp)
+
+	return dictlist
+
+def longListSimple (longList):
+	shortList = []
+	for i in range (0, len(longList)):
+		shortList.append(longList[i][0])
+
+	return shortList
+
+def dictToListFull (toConvert):
+
+	workingWith = dictToLongList(toConvert)
+	workingWith = longListSimple(workingWith)
+
+	return (workingWith)
 
 
 def allocateLocation (listOfPlaces):
@@ -44,25 +76,55 @@ def itemsToAllocate (items, places):
 
 			itemDict[str(dictionaryLength)] = [itemToPlace]
 			
-			itemMap[itemAllocatedPlace] = itemDict
+			itemMap[itemAllocatedPlace][i] = itemDict
 
 
 	print()
 	return itemMap
 
-def dictionaryToList(dict):
-	toReturn = []
 
-	for key in dict:
-		toReturn.append(dict[key])
+def itemsToContainers (roomName):
+	for i in range(0, len(rooms[roomName]["items"])):
+		hidingplacesList = dictToListFull(rooms[roomName]["containers"])
+		roomSelected = allocateLocation(hidingplacesList)
+		#print(roomSelected)
+		rooms[roomName]["containers"][roomSelected].append(rooms[roomName]["items"][i])
 
-	return toReturn
+
+
+def initiateRooms ():
+
+    roomsList = dictToListFull(rooms)    
+
+    for i in range (0, len(roomsList)):
+        print()
+        print(roomsList[i])
+        print()
+        itemsToContainers(roomsList[i])
+        displayContainerItems(roomsList[i])
+
+    #print(rooms["OT"]["containers"])
+
+def listWhatsWhere(amount, names):
+    toReturn = " "
+
+    for i in range(0, len(names)):
+        toReturn = (names[i]["name"]) + ","
+
+    return toReturn
+
+
+def displayContainerItems (room):
+    for i in rooms[room]["containers"]:
+        print (("In " + i + " there is: " + listWhatsWhere(len(rooms[room]["containers"][i]),rooms[room]["containers"][i]) + ".").lower())
 
 
 
-examplePlaces = ["Left Cuboard","Right Cuboard","Desk Drawer", "Under Body",]
+"""examplePlaces = ["Left Cuboard","Right Cuboard","Desk Drawer", "Under Body",]
 
 itemsToPlace = ["Parachute Craft List", "Knife", "Cheese Pasty"]
+
+searchItem = examplePlaces[0]
 
 
 while True:				
@@ -70,7 +132,16 @@ while True:
 	print()
 	input("Press Enter ")
 	print()
-	print(itemsToAllocate(itemsToPlace, examplePlaces))
+	dictionaryVersion = itemsToAllocate(itemsToPlace, examplePlaces)
+	print()
+	print(dictionaryVersion)
+	print()
+	searchItem = input("Where would you like to search: ").title()
+	try:
+		print()
+		print(dictionaryVersion[searchItem])
+	except: 
+		print("Nothing in the " + searchItem + ".")"""
 
 
 
