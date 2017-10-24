@@ -60,6 +60,7 @@ def itemsToAllocate (items, places):
 		itemDict = {}
 
 		itemToPlace = items[i]
+
 		itemAllocatedPlace = allocateLocation(places)
 		print("The " + itemToPlace + " is in " + itemAllocatedPlace + ".")
 
@@ -87,6 +88,13 @@ def itemsToContainers (roomName):
 		roomSelected = allocateLocation(hidingplacesList)
 		#print(roomSelected)
 		rooms[roomName]["containers"][roomSelected].append(rooms[roomName]["items"][i])
+
+	rooms[roomName]["items"] = {}
+
+	print(rooms[roomName]["items"])
+
+	print(rooms[roomName]["containers"])
+
 
 
 
