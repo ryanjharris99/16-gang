@@ -109,7 +109,9 @@ room_ChildrenWard={
 	"name": "The Children's Ward",
 
 	"description":
-	""" """,
+	""" Right after you step foot into the Children's Ward, you are welcomed by whispering of children's voices. The room looked like it was never damaged
+         whcih brings a uneartly feeling. You come across a note left in the room.
+         Would the note benefit you in any way possible? """,
 
 	"exits": {"up":"Attic", "left":"Reception"},
 
