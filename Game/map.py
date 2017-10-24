@@ -94,9 +94,11 @@ room_morgue={
 	"name": "Morgue",
 
 	"description":
-	""" """,
+	"""    The lights in the corrider are flickering. As you walk into the morgue, you stumble upon coffins scattered around. Walls splattered with blood.
+        You've decided to examine each coffins. As you examine further, you start to realize movement from the bodies placed in the coffin.
+        Towards the last coffin, you come across a sign which says "Be Aware of Zombies".""",
 
-	"exits": {},
+	"exits": {"up":"Reception"},
 
 	"items": [item_rope],
 
@@ -107,7 +109,9 @@ room_ChildrenWard={
 	"name": "The Children's Ward",
 
 	"description":
-	""" """,
+	""" Right after you step foot into the Children's Ward, you are welcomed by whispering of children's voices. The room looked like it was never damaged
+         whcih brings a uneartly feeling. You come across a note left in the room.
+         Would the note benefit you in any way possible? """,
 
 	"exits": {"up":"Attic", "left":"Reception"},
 
