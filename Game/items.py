@@ -128,9 +128,9 @@ item_loadedgun = {
 }
 
 item_xrayNote = {
-    "id": "xray_note",
+    "id": "notes",
 
-    "name": "Xray note",
+    "name": "research notes",
 
     "recipe": [],
 
@@ -212,17 +212,30 @@ item_chocolate = {
     "description": "A packaged chocolate bar, your favourite kind too"
 }
 
-item_fruit = {
-    "id": "fruit",
+item_apple = {
+    "id": "apple",
 
     "name": "apple",
 
     "recipe": [],
 
-    "energy": "5",
+    "energy": 5,
 
     "description": "Doesn't look the freshest but should do.. "
 }
+
+item_card= {
+    "id": "card",
+
+    "name": "get well soon card",
+
+    "recipe": [],
+
+    "energy": 0,
+
+    "description": "A get well soon card left to you by your family"
+}
+
 
 item_parachute = {
     "id": "parachute",
@@ -241,4 +254,4 @@ item_parachute = {
 
 
 
-items_list = [item_pen, item_newspaper, item_patients_gown, item_card, item_bedsheet, item_suture, item_rope, item_gun, item_bullets ,item_xrayNote, item_atticNote, item_atticNote2, item_wardNote, item_WaitingNote, item_drink, item_chocolate, item_fruit, item_loadedgun,item_parachute]
+#items_list = [item_pen, item_newspaper, item_patients_gown, item_card, item_bedsheet, item_suture, item_rope, item_gun, item_bullets ,item_xrayNote, item_atticNote, item_atticNote2, item_wardNote, item_WaitingNote, item_drink, item_chocolate, item_fruit, item_loadedgun,item_parachute]

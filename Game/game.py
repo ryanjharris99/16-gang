@@ -33,7 +33,7 @@ def list_of_items(items):
 
 def print_containers(container):
     """This function prints all of the containers in a given room"""
-    type_print("SEARCH the " + container + ".")
+    type_print("SEARCH the " + container + ".", 0.001)
 
 
 
@@ -82,7 +82,7 @@ def print_exit(direction, leads_to):
 
     GO <EXIT NAME UPPERCASE> to <where it leads>.
     """
-    type_print("GO " + direction.upper() + " to " + leads_to + ".")
+    type_print("GO " + direction.upper() + " to " + leads_to + ".", 0.001)
 
 
 def print_menu(exits, room_items, inv_items):
@@ -104,6 +104,8 @@ def print_menu(exits, room_items, inv_items):
         print_exit(direction, exit_leads_to(exits, direction))
     for container in current_room["containers"]:
         print_containers(container)
+    type_print("INSPECT inventory items.", 0.001)
+    type_print("EAT inventory items.", 0.001)
     print("")
     if energy > 16:
         type_print("You are full of energy!")
@@ -350,12 +352,20 @@ def main():
     energyLossTime = getCurrentTime() #time since energy was last lost
     initiateRooms()
     schedule = sched.scheduler(time.time, time.sleep)
+    xrayCount = 0
 
     # Main game loop
     while True:
         # Display game status (room description, inventory etc.)
         print_room(current_room)
         print_inventory_items(inventory)
+        if current_room["name"] == "Xray Room":
+            if xrayCount >= 5:
+                type_print("You have died")
+                break
+            else:
+                xrayCount += 1
+                schedule.enter(randint(5, 15), 1, type_print(xrayRoomMessage()))
 
         # Show the menu with possible actions and ask the player
         command = menu(current_room["exits"], current_room["items"], inventory)
@@ -366,7 +376,6 @@ def main():
         if timeSince(energyLossTime, getCurrentTime()) > 60:
             energy -= 1
 
-        schedule.enter(randint(15, 45), 1, printMessage())
 
 
 

@@ -3,6 +3,7 @@ import time
 import random
 
 
+
 def main():
 	initial = getCurrentTime ()
 
@@ -29,10 +30,10 @@ def main():
 	
 
 
-def printMessage ():
+def xrayRoomMessage ():
 #https://stackoverflow.com/questions/306400/how-to-randomly-select-an-item-from-a-list
 	Messages = ["You're starting to feel drowsy...", "You're Hands are starting to sweat...","something doesn't feel right...","You can start to feel weak..."]
-	print(random.choice(Messages))
+	return(random.choice(Messages))
 
 
 def getCurrentTime ():
