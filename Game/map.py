@@ -13,7 +13,7 @@ room_OT={
 
 	 "exits": {"left":"Patient_Room", "right":"Xray"},
 
-	 "items": [item_bedsheet, item_suture, ],
+	 "items": [item_bedsheet, item_suture],
 
 	 "containers": {"tray": [],"cupboard": [],"corpse": [], "table":[], }
 

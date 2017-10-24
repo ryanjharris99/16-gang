@@ -5,7 +5,7 @@ item_newspaper = {
 
     "recipe": [],
 
-    "energy": "0",
+    "energy": 0,
 
     "description": 
 
@@ -20,7 +20,7 @@ item_pen = {
 
     "recipe": [],
 
-    "energy": "0",
+    "energy": 0,
 
     "description": "A basic ballpoint pen."
 }
@@ -33,7 +33,7 @@ item_patients_gown = {
 
     "recipe": [],
 
-    "energy": "0",
+    "energy": 0,
 
     "description": "A basic patients gown to keep you warm"
 }
@@ -45,7 +45,7 @@ item_card = {
 
     "recipe": [],
 
-    "energy": "0",
+    "energy": 0,
 
     "description": "A get well soon card written to you by your family"
 }
@@ -57,7 +57,7 @@ item_bedsheet = {
 
     "recipe": [],
 
-    "energy": "0",
+    "energy": 0,
 
     "description": "A pile of bloody bedsheets"
 }
@@ -69,7 +69,7 @@ item_suture = {
 
     "recipe": [],
 
-    "energy": "0",
+    "energy": 0,
 
     "description": "the kit contains: surgical needles, nylon sutures (thread), scalpel, small scissors, tape"
 }
@@ -81,7 +81,7 @@ item_rope = {
 
     "recipe": [],
 
-    "energy": "0",
+    "energy": 0,
 
     "description": "a thick, dusty rope probably left over from the renovation of the hospital"
 }
@@ -93,7 +93,7 @@ item_gun = {
 
     "recipe": [],
 
-    "energy": "0",
+    "energy": 0,
 
     "description": "oh no! there are no bullets in the pistol, maybe there are lying around somewhere else..."
 }
@@ -105,11 +105,11 @@ item_gun = {
 item_bullets = {
     "id": "bullets",
 
-    "name": "A bunch of bullets",
+    "name": "bunch of bullets",
 
     "recipe": [],
 
-    "energy": "0",
+    "energy": 0,
 
     "description": "a bunch of bullets scattered on the floor, there must be a gun around somewhere..."
 }
@@ -122,7 +122,7 @@ item_loadedgun = {
 
     "recipe": [item_gun, item_bullets],
 
-    "energy": "0",
+    "energy": 0,
 
     "description": "Shiny and deadly"
 }
@@ -134,31 +134,31 @@ item_xrayNote = {
 
     "recipe": [],
 
-    "energy": "0",
+    "energy": 0,
 
     "description": " CAUTION! ZOMBIES WAKE UP AT MIDNIGHT... "
 }
 
 item_atticNote = {
-    "id": "attic_note",
+    "id": "diary",
 
-    "name": "Attic note",
+    "name": "Old diary",
 
     "recipe": [],
 
-    "energy": "0",
+    "energy": 0,
 
     "description": """ how to: construct a parachute, items required: a large sheet, rope, tape and thread  """
 }
 
 item_atticNote2 = {
-    "id": "attic_note2",
+    "id": "paper",
 
     "name": "Attic note 2",
 
     "recipe": [],
 
-    "energy": "0",
+    "energy": 0,
 
     "description": "this note seems very old nothing can be made out "
 
@@ -171,7 +171,7 @@ item_wardNote = {
 
     "recipe": [],
 
-    "energy": "0",
+    "energy": 0,
 
     "description": " a drawing of zombies "
 }
@@ -183,7 +183,7 @@ item_WaitingNote = {
 
     "recipe": [],
 
-    "energy": "0",
+    "energy": 0,
 
     "description": "whoops! this is isn't a note just a crumpled up tissue"
 }
@@ -195,19 +195,19 @@ item_drink = {
 
     "recipe": [],
 
-    "energy": "20",
+    "energy": 20,
 
     "description": "The fuel of programmers"
 }
 
 item_chocolate = {
-    "id": "Chocolate",
+    "id": "chocolate",
 
     "name": "chocolate bar",
 
     "recipe": [],
 
-    "energy": "10",
+    "energy": 10,
 
     "description": "A packaged chocolate bar, your favourite kind too"
 }
@@ -215,7 +215,7 @@ item_chocolate = {
 item_fruit = {
     "id": "fruit",
 
-    "name": "An apple",
+    "name": "apple",
 
     "recipe": [],
 
@@ -227,11 +227,11 @@ item_fruit = {
 item_parachute = {
     "id": "parachute",
 
-    "name": "a parachute",
+    "name": "parachute",
 
     "recipe": [item_rope, item_suture, item_patients_gown, item_bedsheet],
 
-    "energy": "0",
+    "energy": 0,
 
     "description": "A parachute made from bedsheets, will this work? who knows!"
 }

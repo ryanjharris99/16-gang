@@ -48,7 +48,7 @@ def print_inventory_items(items):
     if items_string != "":
         type_print("INVENTORY:\n")
         for item in items:
-            type_print(" - " + item["name"])
+            type_print(" - " + item["name"], 0.0001)
 
 
 def print_room(room):
@@ -177,7 +177,6 @@ def execute_read(item_id):
     """This function prints the description of a chosen item in the players inventory"
     """
     global inventory
-    items_room = current_room["items"]
     for item in inventory:
         if item_id == item["id"]:
             type_print(item["description"])
@@ -204,6 +203,19 @@ def execute_search(container_id):
             to_delete = item
     if to_delete != "":
         del current_room["containers"][to_delete]
+
+def execute_eat(item_id):
+    global inventory
+    global energy
+    for item in inventory:
+        if item_id == item["id"]:
+            if item["energy"] != 0:
+                energy += item["energy"]
+                inventory.remove(item)
+                type_print("You ate the " + item["name"] + ".")
+            else:
+                type_print("You can't eat that!")
+
     
 
 def execute_command(command):
@@ -244,6 +256,11 @@ def execute_command(command):
             execute_search(command[1])
         else:
             type_print("Search what?")
+    elif command[0] == "eat":
+        if len(command) > 1:
+            execute_eat(command[1])
+        else:
+            type_print("Eat what?")
     elif command[0] == "combine" or command[0] == "craft":
         if(len(command) > 1):
             user_input = []
@@ -339,13 +356,13 @@ def move(exits, direction):
     moved = True
     return rooms[exits[direction]]
 
-def type_print(text):
+def type_print(text, speed = 0.02):
     if platform.system() == "Windows":
         winsound.PlaySound(dir_sounds + "typing.wav" ,winsound.SND_FILENAME | winsound.SND_ASYNC)
     for c in text:
         sys.stdout.write( '%s' % c ) #https://stackoverflow.com/questions/9246076/how-to-print-one-character-at-a-time-on-one-line
         sys.stdout.flush()
-        time.sleep(0.02)
+        time.sleep(speed)
     print("\n")  
     if platform.system() == "Windows":
         winsound.PlaySound(None, winsound.SND_PURGE)
@@ -380,5 +397,5 @@ def main():
 # '__main__' is the name of the scope in which top-level code executes.
 # See https://docs.python.org/3.4/library/__main__.html for explanation
 if __name__ == "__main__":
-    main_menu()
+    main()
 
