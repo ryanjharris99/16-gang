@@ -132,12 +132,13 @@ def is_valid_exit(exits, chosen_exit):
     return chosen_exit in exits
 
 
-def execute_go(direction):
+def execute_go(command):
     """This function, given the direction (e.g. "south") updates the current room
     to reflect the movement of the player if the direction is a valid exit
     (and prints the name of the room into which the player is
     moving). Otherwise, it prints "You cannot go there."
     """
+    direction = command[1]
     global current_room
     global moved
     exits = (current_room["exits"])
@@ -145,12 +146,13 @@ def execute_go(direction):
         moved = True
         current_room = move(exits, direction)
 
-def execute_take(item_id):
+def execute_take(command):
     """This function takes an item_id as an argument and moves this item from the
     list of items in the current room to the player's inventory. However, if
     there is no such item in the room, this function prints
     "You cannot take that."
     """
+    item_id = command[1]
     global inventory
     items_room = current_room["items"]
     for item in items_room:
@@ -159,11 +161,12 @@ def execute_take(item_id):
             items_room.remove(item)
     
 
-def execute_drop(item_id):
+def execute_drop(command):
     """This function takes an item_id as an argument and moves this item from the
     player's inventory to list of items in the current room. However, if there is
     no such item in the inventory, this function prints "You cannot drop that."
     """
+    item_id = command[1]
     global inventory
     items_room = current_room["items"]
     for item in inventory:
@@ -171,17 +174,20 @@ def execute_drop(item_id):
             inventory.remove(item)
             items_room.append(item)
 
-def execute_read(item_id):
+def execute_read(command):
     """This function prints the description of a chosen item in the players inventory"
     """
+
+    item_id = command[1]
     global inventory
     for item in inventory:
         if item_id == item["id"]:
             type_print(item["description"])
 
-def execute_search(container_id):
+def execute_search(command):
     """This function searches a given container and adds any items in it to the 
     player's inventory"""
+    container_id = command[1]
     global inventory
     containers_room = current_room["containers"]
     list_of_containers = []
@@ -202,7 +208,9 @@ def execute_search(container_id):
     if to_delete != "":
         del current_room["containers"][to_delete]
 
-def execute_eat(item_id):
+def execute_eat(command):
+
+    item_id = command[1]
     global inventory
     global energy
     for item in inventory:
@@ -214,7 +222,27 @@ def execute_eat(item_id):
             else:
                 type_print("You can't eat that!")
 
-    
+def execute_combine(command):
+    user_input = []
+    for word in command:
+        if word != "combine":
+            user_input.append(word)
+
+    CraftedItem = crafting(finding_crafting_items(user_input))
+
+    if(CraftedItem != None):
+        type_print("\n" + "You have crafted: " + CraftedItem["name"])
+        global inventory
+
+        inventory.append(CraftedItem)
+        foundItems = finding_crafting_items(user_input)
+        for item in foundItems:
+            inventory.remove(item)
+    else:
+        type_print("You can't craft anything with these")
+
+list_of_execute_functions = { "go": execute_go, "take": execute_take, "drop": execute_drop, "read": execute_read, "inspect": execute_read, "search": execute_search,
+"eat": execute_eat, "combine": execute_combine, "craft": execute_combine   }
 
 def execute_command(command):
     """This function takes a command (a list of words as returned by
@@ -223,65 +251,14 @@ def execute_command(command):
     execute_take, or execute_drop, supplying the second word as the argument.
 
     """
-
+    
     if 0 == len(command):
         return
 
-    if command[0] == "go":
-        if len(command) > 1:
-            execute_go(command[1])
-        else:
-            type_print("Go where?")
-
-    elif command[0] == "take":
-        if len(command) > 1:
-            execute_take(command[1])
-        else:
-            type_print("Take what?")
-
-    elif command[0] == "drop":
-        if len(command) > 1:
-            execute_drop(command[1])
-        else:
-            type_print("Drop what?")
-    elif command[0] == "read" or command[0] == "inspect":
-        if len(command) > 1:
-            execute_read(command[1])
-        else:
-            type_print(command[0] + " what?")
-    elif command[0] == "search":
-        if len(command) > 1:
-            execute_search(command[1])
-        else:
-            type_print("Search what?")
-    elif command[0] == "eat":
-        if len(command) > 1:
-            execute_eat(command[1])
-        else:
-            type_print("Eat what?")
-    elif command[0] == "combine" or command[0] == "craft":
-        if(len(command) > 1):
-            user_input = []
-            for word in command:
-                if word != "combine":
-                    user_input.append(word)
-
-            CraftedItem = crafting(finding_crafting_items(user_input))
-
-            if(CraftedItem != None):
-                type_print("\n" + "You have crafted: " + CraftedItem["name"])
-                global inventory
-
-                inventory.append(CraftedItem)
-                foundItems = finding_crafting_items(user_input)
-                for item in foundItems:
-                    inventory.remove(item)
-            else:
-                type_print("You can't craft anything with these")
-        else:
-            type_print("Combine what?")
-    else:
-        type_print("What?")
+    for key in list_of_execute_functions:
+        if(command[0] == key):
+            list_of_execute_functions[key](command)
+            
 
 
 def menu(exits, room_items, inv_items):
