@@ -7,9 +7,7 @@ from gameparser import *
 from timeFunction import *
 from objectAllocation import *
 from mainMenu import *
-import time
-import sys
-import platform
+import sched, time, sys, platform, random
 if platform.system() == "Windows":
     import winsound
 import os 
@@ -374,6 +372,7 @@ def main():
     gameStart = getCurrentTime() #time the game started
     energyLossTime = getCurrentTime() #time since energy was last lost
     initiateRooms()
+    schedule = sched.scheduler(time.time, time.sleep)
 
     # Main game loop
     while True:
@@ -389,6 +388,8 @@ def main():
 
         if timeSince(energyLossTime, getCurrentTime()) > 60:
             energy -= 1
+
+        schedule.enter(randint(15, 45), 1, printMessage())
 
 
 

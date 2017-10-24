@@ -3,7 +3,7 @@ import time
 import random
 
 
-def main ():
+def main():
 	initial = getCurrentTime ()
 
 	difficult = 1
@@ -42,13 +42,7 @@ def getCurrentTime ():
 	Or time whilst fighting the zombies."""
 	return time.time()
 
-def timeSince(initial):
-	current = getCurrentTime()
-
-	print (current)
-
-	print (initial)
-
+def timeSince(initial, current):
 	return current - initial
 
-main ()
+#main()
