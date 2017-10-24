@@ -94,9 +94,11 @@ room_morgue={
 	"name": "Morgue",
 
 	"description":
-	""" """,
+	"""    The lights in the corrider are flickering. As you walk into the morgue, you stumble upon coffins scattered around. Walls splattered with blood.
+        You've decided to examine each coffins. As you examine further, you start to realize movement from the bodies placed in the coffin.
+        Towards the last coffin, you come across a sign which says "Be Aware of Zombies".""",
 
-	"exits": {},
+	"exits": {"up":"Reception"},
 
 	"items": [],
 
