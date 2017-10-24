@@ -35,7 +35,7 @@ item_patients_gown = {
 
     "energy": 0,
 
-    "description": "A basic patients gown to keep you warm"
+    "description": "A basic patients gown to keep you warm."
 }
 
 item_card = {
@@ -47,7 +47,7 @@ item_card = {
 
     "energy": 0,
 
-    "description": "A get well soon card written to you by your family"
+    "description": "A get well soon card written to you by your family."
 }
 
 item_bedsheet = {
@@ -59,7 +59,7 @@ item_bedsheet = {
 
     "energy": 0,
 
-    "description": "A pile of bloody bedsheets"
+    "description": "A pile of bloody bedsheets."
 }
 
 item_suture = {
@@ -71,7 +71,7 @@ item_suture = {
 
     "energy": 0,
 
-    "description": "the kit contains: surgical needles, nylon sutures (thread), scalpel, small scissors, tape"
+    "description": "the kit contains: surgical needles, nylon sutures (thread), scalpel, small scissors, tape."
 }
 
 item_rope = {
@@ -83,7 +83,7 @@ item_rope = {
 
     "energy": 0,
 
-    "description": "a thick, dusty rope probably left over from the renovation of the hospital"
+    "description": "a thick, dusty rope probably left over from the renovation of the hospital."
 }
 
 item_gun = {
@@ -142,7 +142,7 @@ item_xrayNote = {
 item_atticNote = {
     "id": "diary",
 
-    "name": "Old diary",
+    "name": "old diary",
 
     "recipe": [],
 
@@ -154,7 +154,7 @@ item_atticNote = {
 item_atticNote2 = {
     "id": "paper",
 
-    "name": "Attic note 2",
+    "name": "crumpled up paer",
 
     "recipe": [],
 
@@ -165,9 +165,9 @@ item_atticNote2 = {
 }
 
 item_wardNote = {
-    "id": "ward_note",
+    "id": "drawing",
 
-    "name": "Children ward note",
+    "name": "Child's drawing",
 
     "recipe": [],
 
@@ -177,9 +177,9 @@ item_wardNote = {
 }
 
 item_WaitingNote = {
-    "id": "Waiting_note",
+    "id": "tissue",
 
-    "name": "Waiting room note",
+    "name": "used tissue",
 
     "recipe": [],
 
@@ -233,7 +233,7 @@ item_card= {
 
     "energy": 0,
 
-    "description": "A get well soon card left to you by your family"
+    "description": "A get well soon card left to you by your family."
 }
 
 

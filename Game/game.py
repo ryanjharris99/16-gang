@@ -7,6 +7,7 @@ from gameparser import *
 from timeFunction import *
 from objectAllocation import *
 from mainMenu import *
+from endings import *
 import sched, time, sys, platform, random
 if platform.system() == "Windows":
     import winsound
@@ -14,7 +15,6 @@ import os
 dir_sounds = os.path.dirname(os.path.realpath(__file__)) + "\sounds\\"
 
 difficulty = ""
-
 
 def list_of_items(items):
     """This function takes a list of items (see items.py for the definition) and
@@ -243,8 +243,12 @@ def execute_combine(command):
     else:
         type_print("You can't craft anything with these")
 
+def execute_jump(command):
+    pass
+
+
 list_of_execute_functions = { "go": execute_go, "take": execute_take, "drop": execute_drop, "read": execute_read, "inspect": execute_read, "search": execute_search,
-"eat": execute_eat, "combine": execute_combine, "craft": execute_combine   }
+"eat": execute_eat, "combine": execute_combine, "craft": execute_combine, "jump": execute_jump}
 
 def execute_command(command):
     """This function takes a command (a list of words as returned by
@@ -372,6 +376,9 @@ def main():
 
         # Execute the player's command
         execute_command(command)
+
+        if checkEndings(current_room, command):
+            break
 
         if timeSince(energyLossTime, getCurrentTime()) > 60:
             energy -= 1
