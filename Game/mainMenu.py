@@ -66,23 +66,11 @@ def main_menu():
 				type_print("What?")
 
 def introduction():
-	type_print("You come to life with a splutter, air pouring into your lungs.")
-	time.sleep(1)
-	type_print("You manage to gain control of your breathing.")
-	time.sleep(1)
-	type_print("You don't remember anything, where are you?")
-	time.sleep(1)
-	type_print("What happened?")
-	time.sleep(1)
-	type_print("You look around and see you are in a hospital bed.")
-	time.sleep(1)
-	type_print("All of the machines and lights are off, something seems off.")
-	time.sleep(1)
-	type_print("Surely someone would have at least rushed past the door...")
-	time.sleep(1)
-	type_print("Where is everyone?")
-	time.sleep(1)
-	type_print("You struggle to sit up, but you need to look around.")
-	time.sleep(1)
-	type_print("You stumble onto your feet, you need to find out what has happened.")
+	intro_list = ["You come to life with a splutter, air pouring into your lungs.","You manage to gain control of your breathing.","You don't remember anything, where are you?",
+					"What happened?", "You look around and see you are in a hospital bed.", "All of the machines and lights are off, something seems off.",
+					"Surely someone would have at least rushed past the door...","Where is everyone?", "You struggle to sit up, but you need to look around.",
+					"You stumble onto your feet, you need to find out what has happened."]
+	for items in intro_list:
+		type_print(items, 0)
+		time.sleep(0)
 	main()

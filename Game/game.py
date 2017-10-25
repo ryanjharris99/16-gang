@@ -101,7 +101,7 @@ def print_menu(exits, room_items, inv_items):
         for item in current_room["items"]:
             type_print("TAKE " + item["name"] + ".")
     print("")
-    if current_room["name"] == "Children's Ward" and item_ladder in inventory:
+    if current_room["name"] == "The Children's Ward" and item_ladder in inventory:
         type_print("ATTACH the ladder to the attic")
     
     if energy > 16:
@@ -139,20 +139,19 @@ def execute_go(command):
     global moved
     exits = (current_room["exits"])
     if is_valid_exit(exits, direction):
-        if current_room["name"] == "Children's Ward" and direction == "up":
-            if room_attic["ladder"] == True:
+        if current_room["name"] == "The Children's Ward" and direction == "up":
+            if rooms["Attic"]["ladder"] == True:
                 moved = True
                 current_room = move(exits, direction)
             else:
                 type_print("You need a way up!")
-        else:
-            moved = True
-        if(current_room == rooms["Reception"] ):
+                pass
+        elif(current_room == rooms["Reception"] ):
             if(direction == "down"):
                 if(item_keycard in inventory):
                     moved = True 
                     current_room = move(exits, direction)
-                    player.morgue_open == True
+                    player.morgue_open == True                
                 else:
                     type_print("this door requires a keycard")
             else:
@@ -266,14 +265,14 @@ def execute_jump(command):
     pass
 
 def execute_attach(command):
-    if current_room["name"] == "Children's Ward" and item_ladder in inventory:
-        room_attic["ladder"] = True
+    if current_room["name"] == "The Children's Ward" and item_ladder in inventory:
+        rooms["Attic"]["ladder"] = True
         inventory.remove(item_ladder)
         type_print("You have attached the ladder to the attic.")
 
 
 list_of_execute_functions = { "go": execute_go, "take": execute_take, "drop": execute_drop, "read": execute_read, "inspect": execute_read, "search": execute_search,
-"eat": execute_eat, "combine": execute_combine, "craft": execute_combine, "jump": execute_jump}
+"eat": execute_eat, "combine": execute_combine, "craft": execute_combine, "jump": execute_jump, "attach": execute_attach}
 
 def execute_command(command):
     """This function takes a command (a list of words as returned by
