@@ -46,7 +46,7 @@ room_Xray={
 
 	"exits": {"left":"Children_Ward"},
 
-	"items": [],
+	"items": [item_crisps],
 
 	"containers": {"cupboard": [],"desk": [], "body":[item_key], "floor": [item_xrayNote] }
 
@@ -107,7 +107,7 @@ room_morgue={
 
 	"exits": {"upstairs":"Reception"},
 
-	"items": [item_rope],
+	"items": [item_rope, item_banana],
 
 	"containers": {"drawers": [], "refrigerator":[item_head]},
 

@@ -11,11 +11,11 @@ import time
 def checkEndings(current_room, command):
 	if current_room["name"] == "Attic" and command[0] == "jump":
 		if item_parachute in player.inventory:
-			parachuteSurvive(True, False)
+			parachuteSurvive()
 			return True
 
 		else:
-			parachuteDie(False, False)
+			parachuteDie()
 			return True
 	if player.player_hp <= 0:
 		died()
@@ -23,17 +23,29 @@ def checkEndings(current_room, command):
 	if current_room["name"] == "Outside" and command[0] == "leave":
 		receptionEnding()
 		return True
+	if player.energy <= 0:
+		exhaustion()
 
 
-def parachuteSurvive(survived, infected):
+
+def parachuteSurvive():
 	type_print("You jump from the attic and survive!")
 	type_print("The parachute actually worked!")
-
 	print_you_win()
+
+def parachuteDie():
+	type_print("You jump from the window.")
+	type_print("You just couldn't take it anymore.")
+	died()
 
 def died():
 	type_print("You have died!")
 	print_game_over()
+
+def exhaustion():
+	type_print("You collapse, you cannot possibly continue.")
+	type_print("No one ever found you...")
+	died()
 
 def receptionEnding():
 	texty = ["You leave the reception and you are greeted by the blinding light of day.",

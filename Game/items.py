@@ -395,7 +395,7 @@ item_head = {
     
     "damage": 1,
     
-    "energy": 0,
+    "energy": 10,
 
     "description": "It's a severed human head, rotting around the wound, this is disgusting."
 
@@ -430,6 +430,39 @@ item_banana = {
     "description": "Doesn't look the freshest but should do.. "
 }
 
+item_crisps = {
+    "id": "crisps",
+
+    "name": "packet of crisps",
+
+    "recipe": [],
+
+    "damage": 1,
+
+    "energy": 5,
+
+    "description": "Sealed packet of crisps, salt and vinegar flavoured!"
+}
+
+item_sandwich = {
+    "id": "sandwich",
+
+    "name": "sandwich",
+
+    "recipe": [],
+
+    "damage": 1,
+
+    "energy": 10,
+
+    "description": "Ham and cheese sandwich, still in the packet!"
+}
 
 
-items_list = [item_head,item_pear, item_banana, item_newspaper, item_patients_gown, item_card, item_bedsheet, item_suture, item_rope, item_gun, item_bullets ,item_xrayNote, item_atticNote, item_atticNote2, item_wardNote, item_WaitingNote, item_drink, item_chocolate, item_apple, item_loadedgun,item_parachute, item_map, item_ladder, item_keycard, item_keycard, item_scalpel]
+
+
+
+items_list = [item_head, item_sandwich, item_crisps, item_pear, item_banana, item_newspaper, item_patients_gown, 
+item_card, item_bedsheet, item_suture, item_rope, item_gun, item_bullets ,item_xrayNote, item_atticNote, item_atticNote2,
+item_wardNote, item_WaitingNote, item_drink, item_chocolate, item_apple, item_loadedgun,item_parachute, item_map, 
+item_ladder, item_keycard, item_keycard, item_scalpel]
