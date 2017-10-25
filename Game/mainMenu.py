@@ -49,17 +49,17 @@ def main_menu():
 			user_input = input("> ").lower()
 			if user_input == "easy":
 				player.difficulty = "easy"
-				print("\n") * 100
+				print("\n" * 100)
 				introduction()
 				break
 			elif user_input == "normal":
 				player.difficulty = "normal"	
-				print("\n") * 100
+				print("\n" * 100)
 				introduction()
 				break
 			elif user_input == "hard":
 				player.difficulty = "hard"
-				print("\n") * 100
+				print("\n" * 100)
 				introduction()
 				break
 			else:
