@@ -139,6 +139,7 @@ def execute_go(command):
     global moved
     exits = (current_room["exits"])
     if is_valid_exit(exits, direction):
+<<<<<<< HEAD
         if current_room["id"] == "Children_Ward" and direction == "up":
             if room_attic["ladder"] == True:
                 moved = True
@@ -147,6 +148,20 @@ def execute_go(command):
                 type_print("You need a way up!")
         else:
             moved = True
+=======
+        if(current_room == rooms["Reception"] ):
+            if(direction == "down"):
+                if(item_keycard in inventory):
+                    moved = True 
+                    current_room = move(exits, direction)
+                else:
+                    type_print("this door requires a keycard")
+            else:
+                moved = True 
+                current_room = move(exits, direction)
+        else:
+            moved = True 
+>>>>>>> 71c8b283b81e4d1e1b352a56c52aa6ccc4222649
             current_room = move(exits, direction)
 
 def execute_take(command):

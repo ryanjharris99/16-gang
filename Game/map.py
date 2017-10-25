@@ -85,7 +85,7 @@ room_attic={
 
 	"exits": {"down":"Children_Ward"},
 
-	"items": [item_atticNote2, item_atticNote, item_rope],
+	"items": [item_atticNote2, item_atticNote, item_rope, item_keycard],
 
 	"containers": {"cupboard": [],"machine": [],"boxes": []},
 
