@@ -113,7 +113,7 @@ def combat(dificulty, zombieHP):
 
 			if(damage == -1):
 				break
-			else:
+			elif(damage != None):
 				if(damage < 10):
 					type_print("You hit the zombie with the item for: " + str(damage) + " hp")
 				else:
