@@ -396,6 +396,10 @@ def main():
                 type_print("You have died")
                 if platform == "Windows":     
                     winsound.PlaySound(dir_sounds + "YouAreDead.wav" ,winsound.SND_FILENAME | winsound.SND_ASYNC)
+                type_print("""Your skin starts to ripple with waves of pain, you fall to the floor with a overwhelming sense of nausea. 
+                    The pain overtakes and your eyes slowly start to close to the sickening sound of the broken X-Ray machines.
+                    Your eyes never open again...""")
+                print_game_over()
                 break
             else:
                 xrayCount += 1
