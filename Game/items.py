@@ -253,8 +253,11 @@ item_apple = {
 
     "recipe": [],
 
+<<<<<<< HEAD
     "damage": 1,
 
+=======
+>>>>>>> 2710f57f0bbdba5f857acf5b8be51dbefcc057bf
     "energy": 5,
 
     "description": "Doesn't look the freshest but should do.. "
@@ -267,8 +270,11 @@ item_card= {
 
     "recipe": [],
 
+<<<<<<< HEAD
     "damage": 0,
 
+=======
+>>>>>>> 2710f57f0bbdba5f857acf5b8be51dbefcc057bf
     "energy": 0,
 
     "description": "A get well soon card left to you by your family."
@@ -294,4 +300,8 @@ item_parachute = {
 
 
 
+<<<<<<< HEAD
 items_list = [item_pen, item_newspaper, item_patients_gown, item_card, item_bedsheet, item_suture, item_rope, item_gun, item_bullets ,item_xrayNote, item_atticNote, item_atticNote2, item_wardNote, item_WaitingNote, item_drink, item_chocolate, item_apple, item_loadedgun,item_parachute]
+=======
+#items_list = [item_pen, item_newspaper, item_patients_gown, item_card, item_bedsheet, item_suture, item_rope, item_gun, item_bullets ,item_xrayNote, item_atticNote, item_atticNote2, item_wardNote, item_WaitingNote, item_drink, item_chocolate, item_fruit, item_loadedgun,item_parachute]
+>>>>>>> 2710f57f0bbdba5f857acf5b8be51dbefcc057bf

@@ -89,11 +89,19 @@ def itemsToContainers (roomName):
 		#print(roomSelected)
 		rooms[roomName]["containers"][roomSelected].append(rooms[roomName]["items"][i])
 
+<<<<<<< HEAD
 	rooms[roomName]["items"] = {}
 
 	print(rooms[roomName]["items"])
 
 	print(rooms[roomName]["containers"])
+=======
+	rooms[roomName]["items"] = []
+
+	#print(rooms[roomName]["items"])
+
+	#print(rooms[roomName]["containers"])
+>>>>>>> 2710f57f0bbdba5f857acf5b8be51dbefcc057bf
 
 
 

@@ -14,8 +14,15 @@ if platform.system() == "Windows":
 import os 
 from combat import *
 
+<<<<<<< HEAD
 
 difficulty = ""
+=======
+def list_of_items(items):
+    """This function takes a list of items (see items.py for the definition) and
+    returns a comma-separated list of item names (as a string).
+    """
+>>>>>>> 2710f57f0bbdba5f857acf5b8be51dbefcc057bf
 
  
 
@@ -346,11 +353,14 @@ def main():
         # Execute the player's command
         execute_command(command)
 
+<<<<<<< HEAD
         if(command[0] == "go"):
             if(random.randint(1, 10) > 4):
                 combat(difficulty, random.randint(2, 10))
 
 
+=======
+>>>>>>> 2710f57f0bbdba5f857acf5b8be51dbefcc057bf
         if checkEndings(current_room, command):
             break
 
