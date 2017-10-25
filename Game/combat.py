@@ -40,7 +40,7 @@ def execute_combat_command(command):
 
 def menu():
 
-	type_print("You can:)
+	type_print("You can:")
 	type_print("HIT the zombie with an item.")
 	type_print("RUN away.")
 
