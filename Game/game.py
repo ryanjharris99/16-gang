@@ -100,10 +100,9 @@ def print_menu(exits, room_items, inv_items):
     if len(current_room["items"]) > 0:
         for item in current_room["items"]:
             type_print("TAKE " + item["name"] + ".")
-    print("")
     if current_room["name"] == "The Children's Ward" and item_ladder in inventory:
         type_print("ATTACH the ladder to the attic")
-    
+    print("")
     if energy > 16:
         type_print("You are full of energy!")
     elif energy > 12:
@@ -150,10 +149,10 @@ def execute_go(command):
             if(direction == "down"):
                 if(item_keycard in inventory):
                     moved = True 
-                    current_room = move(exits, direction)
-                    player.morgue_open == True                
+                    player.morgue_open = True
+                    current_room = move(exits, direction)              
                 else:
-                    type_print("this door requires a keycard")
+                    type_print("This door requires a keycard!")
             else:
                 moved = True 
                 current_room = move(exits, direction)
@@ -288,6 +287,7 @@ def execute_command(command):
     for key in list_of_execute_functions:
         if(command[0] == key):
             list_of_execute_functions[key](command)
+
             
 
 
@@ -386,12 +386,20 @@ def main():
 
         # Display game status (room description, inventory etc.)
         if checkEndings(current_room, command):
+            if platform == "Windows":     
+                winsound.PlaySound(dir_sounds + "YouAreDead.wav" ,winsound.SND_FILENAME | winsound.SND_ASYNC)
             break
         print_room(current_room)
         print_inventory_items(inventory)
         if current_room["name"] == "Xray Room":
             if xrayCount >= 5:
                 type_print("You have died")
+                if platform == "Windows":     
+                    winsound.PlaySound(dir_sounds + "YouAreDead.wav" ,winsound.SND_FILENAME | winsound.SND_ASYNC)
+                type_print("""Your skin starts to ripple with waves of pain, you fall to the floor with a overwhelming sense of nausea. 
+                    The pain overtakes and your eyes slowly start to close to the sickening sound of the broken X-Ray machines.
+                    Your eyes never open again...""")
+                print_game_over()
                 break
             else:
                 xrayCount += 1
@@ -409,6 +417,8 @@ def main():
                     combat(difficulty, random.randint(2, 10))
 
         if checkEndings(current_room, command):
+            if platform == "Windows":     
+                winsound.PlaySound(dir_sounds + "YouAreDead.wav" ,winsound.SND_FILENAME | winsound.SND_ASYNC)
             break
 
         if timeSince(energyLossTime, getCurrentTime()) > energyLoss:
