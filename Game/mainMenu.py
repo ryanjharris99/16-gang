@@ -1,13 +1,13 @@
 from game import *
 import time
 def print_title():
-	print("""  ▄▀  ██   █▀▄▀█ ▄███▄          ▄   ██   █▀▄▀█ ▄███▄   
-▄▀    █ █  █ █ █ █▀   ▀          █  █ █  █ █ █ █▀   ▀  
-█ ▀▄  █▄▄█ █ ▄ █ ██▄▄        ██   █ █▄▄█ █ ▄ █ ██▄▄    
-█   █ █  █ █   █ █▄   ▄▀     █ █  █ █  █ █   █ █▄   ▄▀ 
- ███     █    █  ▀███▀       █  █ █    █    █  ▀███▀   
-        █    ▀               █   ██   █    ▀           
-       ▀                             ▀                 """)
+	print(""" .-. .-. .---.    .---. ,---.  ,-. _______  .--.  ,-.      _____   
+ | | | |/ .-. )  ( .-._)| .-.\ |(||__   __|/ /\ \ | |     /___  /  
+ | `-' || | |(_)(_) \   | |-' )(_)  )| |  / /__\ \| |        / /)  
+ | .-. || | | | _  \ \  | |--' | | (_) |  |  __  || |       / /(_) 
+ | | |)|\ `-' /( `-'  ) | |    | |   | |  | |  |)|| `--.   / /___  
+ /(  (_) )---'  `----'  /(     `-'   `-'  |_|  (_)|( __.' (_____/  
+(__)    (_)            (__)                       (_)            \n""")
 
 def print_main_menu():
 	type_print("START - Begin the horrors\n")
@@ -49,12 +49,15 @@ def main_menu():
 			if user_input == "easy":
 				difficulty = "easy"
 				introduction()
+				break
 			elif user_input == "normal":
 				difficulty = "normal"
 				introduction()
+				break
 			elif user_input == "hard":
 				difficulty = "hard"
 				introduction()
+				break
 			else:
 				type_print("What?")
 

@@ -100,8 +100,8 @@ def combat(dificulty, zombieHP):
 			player.player_hp -= random.randint(starting_damage_number, 10) * damage_modifier 
 			type_print("your health is now: " + str(player.player_hp))
 			if(player.player_hp <= 0):
-				player.player_hp = 50
 				type_print("You were defeated!")
+				break
 			players_turn = True
 		else:
 
