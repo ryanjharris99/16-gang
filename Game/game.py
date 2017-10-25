@@ -91,23 +91,23 @@ def print_menu(exits, room_items, inv_items):
     for direction in exits:
         # Print the exit name and where it leads to
         print_exit(direction, exit_leads_to(exits, direction))
-    for container in current_room["containers"]:
+    for container in current_room["containers"]: #For all the containers in the room, print the containers using the function
         print_containers(container)
     type_print("INSPECT inventory items.")
     type_print("EAT inventory items.")
-    if len(current_room["items"]) > 0:
+    if len(current_room["items"]) > 0: #If there are items in the room
         for item in current_room["items"]:
             type_print("TAKE " + item["name"] + ".")
-    if current_room["name"] == "The Children's Ward" and item_ladder in inventory:
+    if current_room["name"] == "The Children's Ward" and item_ladder in inventory: #If the ladder can be attached
         type_print("ATTACH the ladder to the attic")
-    if current_room["name"] == "Reception":
+    if current_room["name"] == "Reception": #If you can leave through the front door
         type_print("LEAVE through the front door.")
-    if current_room["name"] == "Morgue" and player.power_on == False:
+    if current_room["name"] == "Morgue" and player.power_on == False: #If in the morgue and the power isn't on
         type_print("FLIP the switch.")
-    if current_room["name"] == "Attic":
+    if current_room["name"] == "Attic": #If in the attic
         type_print("JUMP through the window.")
     print("")
-    if energy > 16:
+    if energy > 16: #Print how the player is feeling depending on how much energy they have
         type_print("You are full of energy!")
     elif energy > 12:
         type_print("You are feeling okay!")
@@ -139,19 +139,19 @@ def execute_go(command):
     """
     direction = command[1]
     global current_room
-    global moved
+    global moved #This variable is used to check wether the room name and description needs to be printed
     exits = (current_room["exits"])
     if is_valid_exit(exits, direction):
-        if current_room["name"] == "The Children's Ward" and direction == "up":
-            if rooms["Attic"]["ladder"] == True:
+        if current_room["name"] == "The Children's Ward" and direction == "up": #Check if wanting to go to the attic
+            if rooms["Attic"]["ladder"] == True: #If the ladder has been placed, allow the movement
                 moved = True
                 current_room = move(exits, direction)
             else:
                 type_print("You need a way up!")
                 pass
-        elif(current_room == rooms["Reception"] ):
+        elif(current_room == rooms["Reception"] ):#Check if the morgue is targeted
             if(direction == "down"):
-                if(item_keycard in inventory):
+                if(item_keycard in inventory): #If the player has the keycard then allow the movement
                     moved = True 
                     player.morgue_open = True
                     current_room = move(exits, direction)              
@@ -161,8 +161,8 @@ def execute_go(command):
             else:
                 moved = True 
                 current_room = move(exits, direction)
-        elif current_room["name"] == "The Children's Ward" and direction == "right":
-            if player.power_on == True:
+        elif current_room["name"] == "The Children's Ward" and direction == "right": #Check if wanting to go to the xray room
+            if player.power_on == True: #If the power is on then allow the movement
                 moved = True
                 current_room = move(exits, direction)
             else:
@@ -212,77 +212,80 @@ def execute_read(command):
             if item["id"] != "map":
                 type_print(item["description"])
             else:
-                print(item["description"])
+                print(item["description"])#We print this because it would take a long time to type_print the ASCII map
 
 def execute_search(command):
     """This function searches a given container and adds any items in it to the 
     player's inventory"""
-    container_id = command[1]
-    global inventory
-    containers_room = current_room["containers"]
-    list_of_containers = []
-    to_delete = ""
-    for item in containers_room:
-        list_of_containers.append(item)
-        if container_id == item:
-            if len(containers_room[container_id]) != 0:
+    container_id = command[1] #The container in question
+    global inventory #The player's inventory
+    containers_room = current_room["containers"] #All of the containers in the room
+    list_of_containers = [] #A blank list to be used later
+    to_delete = "" #A blank string to be used later
+    for item in containers_room:#For every cotainer in the room
+        list_of_containers.append(item)#Add it to the list
+        if container_id == item:#If the input container_id is the same as the one in the room
+            if len(containers_room[container_id]) != 0:#If there are items in the container
                 for items in current_room["containers"][container_id]:
                     type_print("You found a " + items["name"] + ".\n")
-                    inventory.append(items)
+                    inventory.append(items)#Add the item(s) to the inventory
             else:
                 if item[-1] == "s":
                     type_print("The " + item + " were empty.\n")
                 else:
                     type_print("The " + item + " was empty.\n")
-            to_delete = item
+            to_delete = item #Remove the container from searchable containers
     if to_delete != "":
         del current_room["containers"][to_delete]
 
 def execute_eat(command):
 
-    item_id = command[1]
+    item_id = command[1] #The item to be eaten
     global inventory
     global energy
     for item in inventory:
         if item_id == item["id"]:
-            if item["energy"] != 0:
-                energy += item["energy"]
-                player.player_hp += item["energy"]
-                inventory.remove(item)
+            if item["energy"] != 0: #Check that the item can be eaten
+                energy += item["energy"] #Add the 'energy' attribute value to the player's energy
+                player.player_hp += item["energy"] #Also add it to the player's health
+                inventory.remove(item) #Remove the food from the inventory
                 type_print("You ate the " + item["name"] + ".")
                 type_print("Your health is now " + str(player.player_hp) + ".")
             else:
                 type_print("You can't eat that!")
 
 def execute_combine(command):
-    user_input = []
-    for word in command:
+    user_input = [] #A list that will be used later
+    for word in command: #For all the items in command
         if word != "combine":
-            user_input.append(word)
+            user_input.append(word)#Add the word to the list
 
-    CraftedItem = crafting(finding_crafting_items(user_input))
+    CraftedItem = crafting(finding_crafting_items(user_input))#Find if an item can be crafted with these items
 
-    if(CraftedItem != None):
+    if(CraftedItem != None):#If it can
         type_print("\n" + "You have crafted: " + CraftedItem["name"])
         global inventory
 
-        inventory.append(CraftedItem)
+        inventory.append(CraftedItem)#Add the item to the inventory
         foundItems = finding_crafting_items(user_input)
         for item in foundItems:
-            inventory.remove(item)
+            inventory.remove(item)#Remove all ingredients
     else:
         type_print("You can't craft anything with these")
 
 def execute_jump(command):
+    #This is used just so that the command will run when input
     pass
 
 def execute_attach(command):
+    #This function is used to attach the ladder to the attic, allowing access
     if current_room["name"] == "The Children's Ward" and item_ladder in inventory:
-        rooms["Attic"]["ladder"] = True
+        rooms["Attic"]["ladder"] = True #Set the ladder attribute to true so that the attic can be accessed
         inventory.remove(item_ladder)
         type_print("You have attached the ladder to the attic.")
 
 def execute_leave(command):
+    #This function checks if the player can leave through the front door (has a key)
     if current_room["name"] == "Reception":
         if item_key in inventory:
             pass
@@ -292,13 +295,16 @@ def execute_leave(command):
         type_print("You can't leave through there!")
 
 def execute_flip(command):
+    #This function is so that the power can be turned on in the morgue
     if current_room["name"] == "Morgue":
-        player.power_on = True
+        player.power_on = True #Turn the power on in the hospital (Not just backup generators)
         type_print("You flipped the switch and the room erupts into light, you hear machines powering up, the power is on!")
 
 
 list_of_execute_functions = { "go": execute_go, "take": execute_take, "drop": execute_drop, "read": execute_read, "inspect": execute_read, "search": execute_search,
 "eat": execute_eat, "combine": execute_combine, "craft": execute_combine, "jump": execute_jump, "attach": execute_attach, "leave": execute_leave, "flip": execute_flip}
+
+#This is a dictionary of all the commands in the game, and the keywords that will trigger this command
 
 def execute_command(command):
     """This function takes a command (a list of words as returned by
@@ -405,12 +411,12 @@ def main():
     global energy
     gameStart = getCurrentTime() #time the game started
     energyLossTime = getCurrentTime() #time since energy was last lost
-    initiateRooms()
-    schedule = sched.scheduler(time.time, time.sleep)
-    xrayCount = 0
-    command = [""]
-    difficulty = player.difficulty
-    if difficulty == "easy":
+    initiateRooms() #Allocate items to containers in the objectAllocation.py file
+    schedule = sched.scheduler(time.time, time.sleep) #A scheduler to set up timed events
+    xrayCount = 0 #The amount of turns spent in the xray room
+    command = [""] #Set command to a blank list so that NoneType errors don't occur
+    difficulty = player.difficulty #Get the difficulty from the player.py
+    if difficulty == "easy": #Set energy loss time depending on difficulty
         energyLoss = 240
     elif difficulty == "normal":
         energyLoss = 180
@@ -420,37 +426,37 @@ def main():
     # Main game loop
     while True:
         # Display game status (room description, inventory etc.)
-        if checkEndings(current_room, command):
+        if checkEndings(current_room, command): #Check if any end conditions have been met
             break
         print_room(current_room)
         print_inventory_items(inventory)
-        if current_room["name"] == "Xray Room":
-            if xrayCount >= 5:
+        if current_room["name"] == "Xray Room": #Check if in the xray room since the xray room is dangerous
+            if xrayCount >= 5: #If more than 5 turns in the xray room
                 type_print("You have died")
                 type_print("""
                     Your skin starts to ripple with waves of pain, you fall to the floor with a overwhelming sense of nausea. 
                     The pain overtakes and your eyes slowly start to close to the sickening sound of the broken X-Ray machines.
                     Your eyes never open again...""")
-                print_game_over()
+                print_game_over() #Kill the player
                 break
             else:
-                xrayCount += 1
-                schedule.enter(randint(5, 15), 1, type_print(xrayRoomMessage()))
+                xrayCount += 1 #Another turn spend in the xray room
+                schedule.enter(randint(5, 15), 1, type_print(xrayRoomMessage())) #Display a message in 5-15 seconds
 
         # Show the menu with possible actions and ask the player
         command = menu(current_room["exits"], current_room["items"], inventory)
 
         # Execute the player's command
         execute_command(command)
-        if(player.morgue_open == True):
+        if(player.morgue_open == True): #Check if the morgue has been opened, if so randomly spawn zombies in rooms
             if(command[0] == "go"):
                 if(random.randint(1, 10) > 4):
                     combat(difficulty, random.randint(2, 10))
 
-        if checkEndings(current_room, command):
+        if checkEndings(current_room, command): #Once again check if any win (or loss) conditions have been met
             break
 
-        if timeSince(energyLossTime, getCurrentTime()) > energyLoss:
+        if timeSince(energyLossTime, getCurrentTime()) > energyLoss: #Check if it has been long enough to deduct energy
             energy -= 1
 
 

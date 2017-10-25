@@ -8,7 +8,10 @@ from timeFunction import *
 import time
 import sys
 
-def keyAlreadyExists(dictionary, testKey):
+#This file is used to take a list of items and containers and allocate the items into the containers randomly
+#This makes the game more interesting as it will be different every time
+
+def keyAlreadyExists(dictionary, testKey): #This function is called if the container already contains an item
 	toReturn = False
 
 	for key in dictionary:
@@ -19,15 +22,14 @@ def keyAlreadyExists(dictionary, testKey):
 	return toReturn
 
 
-def dictToLongList (dictionaryList):
+def dictToLongList (dictionaryList): #This takes a dictionary and returns a list
 	dictlist = []
-	for key, value in dictionaryList.items():
+	for key, value in dictionaryList.items(): #For each value in the dictionary
 		temp = [key,value]
-		dictlist.append(temp)
-
+		dictlist.append(temp) #Add it to the list
 	return dictlist
 
-def longListSimple (longList):
+def longListSimple (longList): #This function will take a dictionary and return a list of the keys
 	shortList = []
 	for i in range (0, len(longList)):
 		shortList.append(longList[i][0])
@@ -43,7 +45,7 @@ def dictToListFull (toConvert):
 
 
 def allocateLocation (listOfPlaces):
-	"""This takes a list of places that teh user can search through.
+	"""This takes a list of places that the user can search through.
 	It then returns one of these places where teh object will be put."""
 	listLength = len(listOfPlaces) 							#gets the length of the list 
 	randomInteger = randint(0, listLength-1)					#creates a random integer
@@ -56,7 +58,7 @@ def itemsToAllocate (items, places):
 	itemMap = {}
 	itemDict = {}
 
-	for i in range (0, len(items)):
+	for i in range (0, len(items)): #For each item in the list
 		itemDict = {}
 
 		itemToPlace = items[i]
@@ -77,79 +79,30 @@ def itemsToAllocate (items, places):
 			
 			itemMap[itemAllocatedPlace][i] = itemDict
 
-
-	print()
 	return itemMap
 
 
-def itemsToContainers (roomName):
+def itemsToContainers (roomName): #This function takes a roomname and sorts the items into containers in that room, using previously created functions
 	for i in range(0, len(rooms[roomName]["items"])):
 		hidingplacesList = dictToListFull(rooms[roomName]["containers"])
 		roomSelected = allocateLocation(hidingplacesList)
-		#print(roomSelected)
 		rooms[roomName]["containers"][roomSelected].append(rooms[roomName]["items"][i])
 
 	rooms[roomName]["items"] = {}
 
-	#print(rooms[roomName]["items"])
-
-	#print(rooms[roomName]["containers"])
-
 	rooms[roomName]["items"] = []
 
-	#print(rooms[roomName]["items"])
-
-	#print(rooms[roomName]["containers"])
 
 
 
-
-def initiateRooms ():
+def initiateRooms (): #The function that uses all other functions and is used in the main game.py
 
     roomsList = dictToListFull(rooms)    
 
     for i in range (0, len(roomsList)):
         itemsToContainers(roomsList[i])
 
-    #print(rooms["OT"]["containers"])
 
-def listWhatsWhere(amount, names):
-    toReturn = " "
-
-    for i in range(0, len(names)):
-        toReturn = (names[i]["name"]) + ","
-
-    return toReturn
-
-
-def displayContainerItems (room):
-    for i in rooms[room]["containers"]:
-        print (("In " + i + " there is: " + listWhatsWhere(len(rooms[room]["containers"][i]),rooms[room]["containers"][i]) + ".").lower())
-
-
-
-"""examplePlaces = ["Left Cuboard","Right Cuboard","Desk Drawer", "Under Body",]
-
-itemsToPlace = ["Parachute Craft List", "Knife", "Cheese Pasty"]
-
-searchItem = examplePlaces[0]
-
-
-while True:				
-
-	print()
-	input("Press Enter ")
-	print()
-	dictionaryVersion = itemsToAllocate(itemsToPlace, examplePlaces)
-	print()
-	print(dictionaryVersion)
-	print()
-	searchItem = input("Where would you like to search: ").title()
-	try:
-		print()
-		print(dictionaryVersion[searchItem])
-	except: 
-		print("Nothing in the " + searchItem + ".")"""
 
 
 
