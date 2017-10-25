@@ -4,10 +4,10 @@ room_OT={
 	"name": "Operating Theatre",
 
 	"description": 
-	 """    You go into the Operating Theartre in front of you is a half operated on body, chest wide open with a scalpel inserted between the fourth and fifth rib.  
+	 """    You go into the Operating Theatre in front of you is a half operated on body. 
+	 It's chest wide open with a scalpel inserted between the fourth and fifth rib.  
 	 There are dozens of surgical drape sheets scattered around the room as if a savage animal had been set aloose... 
-	 You walk up to the body and are fixated upon the fresh bullet hole between the victims eyes. 
-	 There are also unused bullets by the victims head.
+	 You walk up to the body and are fixated upon the fresh bullet hole between the victims eyes.
 	 You look about more and there are plenty of surgial cuboards for you to look through.
 	 """,
 
@@ -15,7 +15,7 @@ room_OT={
 
 	 "items": [item_bedsheet, item_suture],
 
-	 "containers": {"tray": [],"cupboard": [],"corpse": [], "table":[], }
+	 "containers": {"tray": [],"cupboard": [],"corpse": [], "table":[], "floor":[item_bullets] }
 
 }
 
@@ -27,7 +27,7 @@ room_Waiting={
 
 	"exits": {"right":"Reception", "left":"Patient_Room"},
 
-	"items": [item_fruit, item_WaitingNote, item_gun],
+	"items": [item_apple, item_WaitingNote, item_gun],
 
 	"containers": {"cupboard": [], }  
 	
@@ -47,9 +47,9 @@ room_Xray={
 
 	"exits": {"left":"OT"},
 
-	"items": [item_xrayNote],
+	"items": [],
 
-	"containers": {"cupboard": [],"desk": [], "body":[], }
+	"containers": {"cupboard": [],"desk": [], "body":[], "floor": [item_xrayNote] }
 
 }
 
@@ -65,7 +65,7 @@ room_reception={
 
 	"exits": {"left":"Waiting_Room", "right":"Children_Ward"},
 
-	"items": [item_newspaper, item_chocolate, item_bullets],
+	"items": [item_newspaper, item_apple],
 
 	"containers": {"cupboard": [],"desk": []}
 
@@ -100,7 +100,7 @@ room_morgue={
 
 	"exits": {"up":"Reception"},
 
-	"items": [],
+	"items": [item_rope],
 
 	"containers": {"cupboard": [],"drawers": [], "refrigerator":[]}
 }
@@ -109,7 +109,9 @@ room_ChildrenWard={
 	"name": "The Children's Ward",
 
 	"description":
-	""" """,
+	""" Right after you step foot into the Children's Ward, you are welcomed by whispering of children's voices. The room looked like it was never damaged
+         whcih brings a uneartly feeling. You come across a note left in the room.
+         Would the note benefit you in any way possible? """,
 
 	"exits": {"up":"Attic", "left":"Reception"},
 
@@ -129,7 +131,7 @@ room_PatientRoom={
 
 	"items": [item_chocolate],
 
-	"containers": {"drawers": [], "bed":[]}
+	"containers": {"drawers": [], "bed":[], "gift":[item_card]}
 }
 
 rooms ={

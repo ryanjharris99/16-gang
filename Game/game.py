@@ -7,46 +7,24 @@ from gameparser import *
 from timeFunction import *
 from objectAllocation import *
 from mainMenu import *
+from endings import *
 import sched, time, sys, platform, random
 if platform.system() == "Windows":
     import winsound
 import os 
-dir_sounds = os.path.dirname(os.path.realpath(__file__)) + "\sounds\\"
+from combat import *
+
 
 difficulty = ""
 
-
-def list_of_items(items):
-    """This function takes a list of items (see items.py for the definition) and
-    returns a comma-separated list of item names (as a string).
-    """
-
-    item_list = ""
-    for item in items:
-        if item_list != "":
-            item_list += ", "
-            item_list += item["name"]
-        else:
-            item_list += item["name"]
-    return item_list
-        
+ 
 
 def print_containers(container):
     """This function prints all of the containers in a given room"""
-    type_print("SEARCH the " + container + ".")
+    type_print("SEARCH the " + container + ".", 0.001)
 
 
 
-def print_inventory_items(items):
-    """This function takes a list of inventory items and displays it nicely, in a
-    manner similar to print_room_items(). The only difference is in formatting:
-    print "You have ..." instead of "There is ... here.". 
-    """
-    items_string = list_of_items(items)
-    if items_string != "":
-        type_print("INVENTORY:\n")
-        for item in items:
-            type_print(" - " + item["name"], 0.0001)
 
 
 def print_room(room):
@@ -82,7 +60,7 @@ def print_exit(direction, leads_to):
 
     GO <EXIT NAME UPPERCASE> to <where it leads>.
     """
-    type_print("GO " + direction.upper() + " to " + leads_to + ".")
+    type_print("GO " + direction.upper() + " to " + leads_to + ".", 0.001)
 
 
 def print_menu(exits, room_items, inv_items):
@@ -104,6 +82,8 @@ def print_menu(exits, room_items, inv_items):
         print_exit(direction, exit_leads_to(exits, direction))
     for container in current_room["containers"]:
         print_containers(container)
+    type_print("INSPECT inventory items.", 0.001)
+    type_print("EAT inventory items.", 0.001)
     print("")
     if energy > 16:
         type_print("You are full of energy!")
@@ -241,8 +221,12 @@ def execute_combine(command):
     else:
         type_print("You can't craft anything with these")
 
+def execute_jump(command):
+    pass
+
+
 list_of_execute_functions = { "go": execute_go, "take": execute_take, "drop": execute_drop, "read": execute_read, "inspect": execute_read, "search": execute_search,
-"eat": execute_eat, "combine": execute_combine, "craft": execute_combine   }
+"eat": execute_eat, "combine": execute_combine, "craft": execute_combine, "jump": execute_jump}
 
 def execute_command(command):
     """This function takes a command (a list of words as returned by
@@ -331,16 +315,7 @@ def move(exits, direction):
     moved = True
     return rooms[exits[direction]]
 
-def type_print(text, speed = 0.02):
-    if platform.system() == "Windows":
-        winsound.PlaySound(dir_sounds + "typing.wav" ,winsound.SND_FILENAME | winsound.SND_ASYNC)
-    for c in text:
-        sys.stdout.write( '%s' % c ) #https://stackoverflow.com/questions/9246076/how-to-print-one-character-at-a-time-on-one-line
-        sys.stdout.flush()
-        time.sleep(speed)
-    print("\n")  
-    if platform.system() == "Windows":
-        winsound.PlaySound(None, winsound.SND_PURGE)
+
 
 
 # This is the entry point of our program
@@ -350,12 +325,20 @@ def main():
     energyLossTime = getCurrentTime() #time since energy was last lost
     initiateRooms()
     schedule = sched.scheduler(time.time, time.sleep)
+    xrayCount = 0
 
     # Main game loop
     while True:
         # Display game status (room description, inventory etc.)
         print_room(current_room)
         print_inventory_items(inventory)
+        if current_room["name"] == "Xray Room":
+            if xrayCount >= 5:
+                type_print("You have died")
+                break
+            else:
+                xrayCount += 1
+                schedule.enter(randint(5, 15), 1, type_print(xrayRoomMessage()))
 
         # Show the menu with possible actions and ask the player
         command = menu(current_room["exits"], current_room["items"], inventory)
@@ -363,10 +346,17 @@ def main():
         # Execute the player's command
         execute_command(command)
 
+        if(command[0] == "go"):
+            if(random.randint(1, 10) > 4):
+                combat(difficulty, random.randint(2, 10))
+
+
+        if checkEndings(current_room, command):
+            break
+
         if timeSince(energyLossTime, getCurrentTime()) > 60:
             energy -= 1
 
-        schedule.enter(randint(15, 45), 1, printMessage())
 
 
 
