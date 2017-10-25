@@ -15,25 +15,12 @@ item_newspaper = {
 
 }
 
-item_pen = {
-    "id": "pen",
-    
-    "name": "A pen",
-
-    "recipe": [],
-
-    "damage": 1,
-
-    "energy": 0,
-
-    "description": "A basic ballpoint pen."
-}
 
 
 item_patients_gown = {
     "id": "gown",
     
-    "name": "A patients gown",
+    "name": "patients gown",
 
     "recipe": [],
 
@@ -47,7 +34,7 @@ item_patients_gown = {
 item_card = {
     "id": "card",
     
-    "name": "A get well soon card",
+    "name": "get well soon card",
 
     "recipe": [],
 
@@ -75,7 +62,7 @@ item_bedsheet = {
 item_suture = {
     "id": "suture",
 
-    "name": "Surgical suture kit",
+    "name": "surgical suture kit",
 
     "recipe": [],
 
@@ -89,7 +76,7 @@ item_suture = {
 item_rope = {
     "id": "rope",
 
-    "name": "A pile of rope",
+    "name": "pile of rope",
 
     "recipe": [],
 
@@ -103,7 +90,7 @@ item_rope = {
 item_gun = {
     "id":"pistol",
 
-    "name": "A classic pistol",
+    "name": "classic pistol",
 
     "recipe": [],
 
@@ -174,7 +161,7 @@ item_atticNote = {
 item_atticNote2 = {
     "id": "paper",
 
-    "name": "crumpled up paer",
+    "name": "crumpled up paper",
 
     "recipe": [],
 
@@ -189,7 +176,7 @@ item_atticNote2 = {
 item_wardNote = {
     "id": "drawing",
 
-    "name": "Child's drawing",
+    "name": "child's drawing",
 
     "recipe": [],
 
@@ -295,6 +282,8 @@ item_map = {
 
     "energy": 0,
 
+    "damage": 0,
+
     "description": """
 
 h::::::::::::::::::::::::::::::::::::::::::::::::::::::::::y
@@ -329,6 +318,7 @@ s                       `..........`                       o
 y::::::::::::::::::::::::::::::::::::::::::::::::::::::::::y
 """
     
+
 }
 
 item_keycard = {
@@ -411,6 +401,35 @@ item_head = {
 
 }
 
+item_pear = {
+    "id": "pear",
+
+    "name": "pear",
+
+    "recipe": [],
+
+    "damage": 1,
+
+    "energy": 5,
+
+    "description": "Doesn't look the freshest but should do.. "
+}
 
 
-items_list = [item_head, item_pen, item_newspaper, item_patients_gown, item_card, item_bedsheet, item_suture, item_rope, item_gun, item_bullets ,item_xrayNote, item_atticNote, item_atticNote2, item_wardNote, item_WaitingNote, item_drink, item_chocolate, item_apple, item_loadedgun,item_parachute, item_map, item_ladder, item_keycard, item_keycard, item_scalpel]
+item_banana = {
+    "id": "banana",
+
+    "name": "banana",
+
+    "recipe": [],
+
+    "damage": 1,
+
+    "energy": 5,
+
+    "description": "Doesn't look the freshest but should do.. "
+}
+
+
+
+items_list = [item_head,item_pear, item_banana, item_newspaper, item_patients_gown, item_card, item_bedsheet, item_suture, item_rope, item_gun, item_bullets ,item_xrayNote, item_atticNote, item_atticNote2, item_wardNote, item_WaitingNote, item_drink, item_chocolate, item_apple, item_loadedgun,item_parachute, item_map, item_ladder, item_keycard, item_keycard, item_scalpel]

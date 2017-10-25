@@ -283,7 +283,7 @@ def execute_attach(command):
         type_print("You have attached the ladder to the attic.")
 
 def execute_leave(command):
-    if current_room["name"] == "Reception":
+    if player.current_room["name"] == "Reception":
         if item_key in inventory:
             checkEndings(current_room, command)
             current_room = room_Outside

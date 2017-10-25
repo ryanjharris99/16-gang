@@ -2,7 +2,7 @@ from items import *
 from map import rooms
 
 infected = True
-inventory = [item_patients_gown, item_keycard]
+inventory = [item_patients_gown]
 energy = 20 #The energy level of the player
 moved = True #Did the player move room last turn
 player_hp = 50 

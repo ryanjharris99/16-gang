@@ -50,8 +50,6 @@ def receptionEnding():
 		type_print(texty)
 		time.sleep(1)
 
-
-	
 	if player.infected == True:
 		type_print("""The officer's face drops and he goes for his gun. """)
 		choice = input("What do you do? (Run/Attack/Scream)")

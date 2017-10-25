@@ -16,7 +16,10 @@ def print_main_menu():
 	type_print("INFO - What the game is and how to play ")
 
 def print_info():
-	type_print("ADD GAME INFO HERE")
+	type_print("HOSPITAL Z is a text-based horror survival game.")
+	type_print("The aim of the game is to escape the hospital.")
+	type_print("This is achieved by typing commands into the program.")
+	type_print("The game interprets your commands and will change accordingly.")
 	type_print("BACK - Back to main menu")
 
 def print_difficulty():
@@ -71,16 +74,6 @@ def introduction():
 					"Surely someone would have at least rushed past the door...","Where is everyone?", "You struggle to sit up, but you need to look around.",
 					"You stumble onto your feet, you need to find out what has happened."]
 	for items in intro_list:
-		type_print(items, 0)
-		time.sleep(0)
+		type_print(items)
+		time.sleep(1)
 	main()
-
-def print_game_over():
-	print("""
-	  ________                                                 ._.
-	 /  _____/_____    _____   ____     _______  __ ___________| |
-	/   \  ___\__  \  /     \_/ __ \   /  _ \  \/ // __ \_  __ \ |
-	\    \_\  \/ __ \|  Y Y  \  ___/  (  <_> )   /\  ___/|  | \/\|
-	 \______  (____  /__|_|  /\___  >  \____/ \_/  \___  >__|   __
-	        \/     \/      \/     \/                   \/       \/
-	""")

@@ -57,7 +57,8 @@ room_reception={
 
 	"description":
 	"""    As you walk into reception you see bolted doors sealed with rusty bars plastered with "DO NOT ENTER" signs from the outside. 
-    You can see bloody handprints against the locked doors, pools of blood swimming with empty shells infront of them. 
+    You can see bloody handprints against the locked doors.
+    Pools of blood swimming with empty shells infront of them. 
     There is a newspaper sat on the receptionist desk the only thing left not broken, kicked in or dripping in blood. 
     The newspaper could explain what has happened to the town.
     You hear footsteps from upstairs and splitting screams from distances outside.
@@ -65,7 +66,7 @@ room_reception={
 
 	"exits": {"left":"Waiting_Room", "down":"Morgue", "upstairs":"Patient_Room"},
 
-	"items": [item_newspaper, item_apple],
+	"items": [item_newspaper, item_pear],
 
 	"containers": {"cupboard": [],"desk": []}
 
