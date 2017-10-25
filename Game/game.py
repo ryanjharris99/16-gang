@@ -137,8 +137,19 @@ def execute_go(command):
     global moved
     exits = (current_room["exits"])
     if is_valid_exit(exits, direction):
-        moved = True
-        current_room = move(exits, direction)
+        if(current_room == rooms["Reception"] ):
+            if(direction == "down"):
+                if(item_keycard in inventory):
+                    moved = True 
+                    current_room = move(exits, direction)
+                else:
+                    type_print("this door requires a keycard")
+            else:
+                moved = True 
+                current_room = move(exits, direction)
+        else:
+            moved = True 
+            current_room = move(exits, direction)
 
 def execute_take(command):
     """This function takes an item_id as an argument and moves this item from the

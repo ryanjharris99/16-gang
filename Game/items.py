@@ -331,9 +331,38 @@ y::::::::::::::::::::::::::::::::::::::::::::::::::::::::::y
     
 }
 
+item_keycard = {
+    
+    "id": "keycard",
+
+    "name": "keycard",
+
+    "recipe": [],
+    
+    "damage": 1,
+    
+    "energy": 0,
+
+    "description": "A keycard, what door is it used for?"
+
+}
+
+item_ladder = {
+        
+    "id": "ladder",
+
+    "name": "ladder",
+
+    "recipe": [],
+    
+    "damage": 4,
+    
+    "energy": 0,
+
+    "description": "A ladder, for elevation"
+
+}
 
 
 
-
-
-items_list = [item_pen, item_newspaper, item_patients_gown, item_card, item_bedsheet, item_suture, item_rope, item_gun, item_bullets ,item_xrayNote, item_atticNote, item_atticNote2, item_wardNote, item_WaitingNote, item_drink, item_chocolate, item_apple, item_loadedgun,item_parachute, item_map]
+items_list = [item_pen, item_newspaper, item_patients_gown, item_card, item_bedsheet, item_suture, item_rope, item_gun, item_bullets ,item_xrayNote, item_atticNote, item_atticNote2, item_wardNote, item_WaitingNote, item_drink, item_chocolate, item_apple, item_loadedgun,item_parachute, item_map, item_ladder, item_keycard]
