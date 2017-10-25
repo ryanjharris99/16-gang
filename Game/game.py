@@ -100,10 +100,9 @@ def print_menu(exits, room_items, inv_items):
     if len(current_room["items"]) > 0:
         for item in current_room["items"]:
             type_print("TAKE " + item["name"] + ".")
-    print("")
     if current_room["name"] == "The Children's Ward" and item_ladder in inventory:
         type_print("ATTACH the ladder to the attic")
-    
+    print("")
     if energy > 16:
         type_print("You are full of energy!")
     elif energy > 12:
