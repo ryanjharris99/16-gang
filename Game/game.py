@@ -391,7 +391,16 @@ def main():
         if current_room["name"] == "Xray Room":
             if xrayCount >= 5:
                 type_print("""Your skin starts to ripple with waves of pain, you fall to the floor with a overwhelming sense of nausea. 
-                    The pain overtakes and your eyes slowly start to close, they never open again...""")
+                    The pain overtakes and your eyes slowly start to close to the sickening sound of the broken X-Ray machines.
+                    Your eyes never open again...""")
+                print("""
+  ________                                                 ._.
+ /  _____/_____    _____   ____     _______  __ ___________| |
+/   \  ___\__  \  /     \_/ __ \   /  _ \  \/ // __ \_  __ \ |
+\    \_\  \/ __ \|  Y Y  \  ___/  (  <_> )   /\  ___/|  | \/\|
+ \______  (____  /__|_|  /\___  >  \____/ \_/  \___  >__|   __
+        \/     \/      \/     \/                   \/       \/
+""")
                 break
             else:
                 xrayCount += 1
