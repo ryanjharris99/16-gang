@@ -403,6 +403,7 @@ def main():
         # Execute the player's command
         execute_command(command)
         if(player.morgue_open == True):
+            type_print("its getting to the zombie creating")
             if(command[0] == "go"):
                 if(random.randint(1, 10) > 4):
                     combat(difficulty, random.randint(2, 10))
