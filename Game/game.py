@@ -142,6 +142,7 @@ def execute_go(command):
                 if(item_keycard in inventory):
                     moved = True 
                     current_room = move(exits, direction)
+                    player.morgue_open == True
                 else:
                     type_print("this door requires a keycard")
             else:
@@ -386,9 +387,11 @@ def main():
 
         # Execute the player's command
         execute_command(command)
-        if(command[0] == "go"):
-            if(random.randint(1, 10) > 4):
-                combat(difficulty, random.randint(2, 10))
+        if(player.morgue_open == True):
+            if(command[0] == "go"):
+                if(random.randint(1, 10) > 4):
+                    combat(difficulty, random.randint(2, 10))
+
         if checkEndings(current_room, command):
             break
 
