@@ -61,7 +61,8 @@ room_reception={
     You can see bloody handprints against the locked doors, pools of blood swimming with empty shells infront of them. 
     There is a newspaper sat on the receptionist desk the only thing left not broken, kicked in or dripping in blood. 
     The newspaper could explain what has happened to the town.
-    You hear footsteps from upstairs and splitting screams from distances outside.""",
+    You hear footsteps from upstairs and splitting screams from distances outside.
+    There is a door leading downstairs, but it requires a keycard to pass through.""",
 
 	"exits": {"left":"Waiting_Room", "down":"Morgue"},
 

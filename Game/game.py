@@ -214,8 +214,10 @@ def execute_eat(command):
         if item_id == item["id"]:
             if item["energy"] != 0:
                 energy += item["energy"]
+                player.player_health += item["energy"]
                 inventory.remove(item)
                 type_print("You ate the " + item["name"] + ".")
+                type_print("Your health is now " + str(player.player_health) + ".")
             else:
                 type_print("You can't eat that!")
 
@@ -345,6 +347,12 @@ def main():
     xrayCount = 0
     command = []
     difficulty = player.difficulty
+    if difficulty == "easy":
+        energyLoss = 120
+    elif difficulty == "normal":
+        energyLoss = 60
+    else:
+        energyLoss = 30
 
     # Main game loop
     while True:
@@ -373,7 +381,7 @@ def main():
         if checkEndings(current_room, command):
             break
 
-        if timeSince(energyLossTime, getCurrentTime()) > 60:
+        if timeSince(energyLossTime, getCurrentTime()) > energyLoss:
             energy -= 1
 
 
