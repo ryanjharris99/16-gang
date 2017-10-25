@@ -125,7 +125,8 @@ room_PatientRoom={
 	"name": "The Patient's Room",
 
 	"description":
-	""" """,
+	""" In one of the scariest night you woke up on a bed. You are hearing water droblets knocking on glass.
+	The first thing you saw is completly darkness, then you realized that you are covering with white hospital sheet """,
 
 	"exits": {"right":"Waiting_Room", "left":"OT"},
 
