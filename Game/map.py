@@ -64,7 +64,7 @@ room_reception={
     You hear footsteps from upstairs and splitting screams from distances outside.
     There is a door leading downstairs, but it requires a keycard to pass through.""",
 
-	"exits": {"left":"Waiting_Room", "down":"Morgue"},
+	"exits": {"left":"Waiting_Room", "down":"Morgue", "upstairs":"Patient_Room"},
 
 	"items": [item_newspaper, item_apple],
 
