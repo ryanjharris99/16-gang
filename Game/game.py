@@ -101,6 +101,8 @@ def print_menu(exits, room_items, inv_items):
         for item in current_room["items"]:
             type_print("TAKE " + item["name"] + ".")
     print("")
+    if current_room["name"] == "Children's Ward" and item_ladder in inventory:
+        type_print("ATTACH the ladder to the attic")
     
     if energy > 16:
         type_print("You are full of energy!")
@@ -137,6 +139,14 @@ def execute_go(command):
     global moved
     exits = (current_room["exits"])
     if is_valid_exit(exits, direction):
+        if current_room["name"] == "Children's Ward" and direction == "up":
+            if room_attic["ladder"] == True:
+                moved = True
+                current_room = move(exits, direction)
+            else:
+                type_print("You need a way up!")
+        else:
+            moved = True
         if(current_room == rooms["Reception"] ):
             if(direction == "down"):
                 if(item_keycard in inventory):
@@ -226,10 +236,10 @@ def execute_eat(command):
         if item_id == item["id"]:
             if item["energy"] != 0:
                 energy += item["energy"]
-                player.player_health += item["energy"]
+                player.player_hp += item["energy"]
                 inventory.remove(item)
                 type_print("You ate the " + item["name"] + ".")
-                type_print("Your health is now " + str(player.player_health) + ".")
+                type_print("Your health is now " + str(player.player_hp) + ".")
             else:
                 type_print("You can't eat that!")
 
@@ -254,6 +264,12 @@ def execute_combine(command):
 
 def execute_jump(command):
     pass
+
+def execute_attach(command):
+    if current_room["name"] == "Children's Ward" and item_ladder in inventory:
+        room_attic["ladder"] = True
+        inventory.remove(item_ladder)
+        type_print("You have attached the ladder to the attic.")
 
 
 list_of_execute_functions = { "go": execute_go, "take": execute_take, "drop": execute_drop, "read": execute_read, "inspect": execute_read, "search": execute_search,
