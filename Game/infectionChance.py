@@ -1,9 +1,9 @@
 #chance of infection
 from random import uniform
-
+import player
 
 diffMult = {"easy": 0.5, "normal": 1, "hard": 2}
-difficulty = diffMult["normal"]
+difficulty = diffMult[player.difficulty]
 
 def zombieAttack (typeOfAttack):
 
