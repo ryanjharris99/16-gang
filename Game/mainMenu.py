@@ -1,5 +1,7 @@
-from game import *
+import player
 import time
+from gameparser import type_print
+from game import main
 def print_title():
 	print(""" .-. .-. .---.    .---. ,---.  ,-. _______  .--.  ,-.      _____   
  | | | |/ .-. )  ( .-._)| .-.\ |(||__   __|/ /\ \ | |     /___  /  
@@ -26,7 +28,6 @@ def main_menu():
 	current_menu = "main_menu"
 	print_title()
 	while True:
-		global difficulty
 		if current_menu == "main_menu":
 			print_main_menu()
 			user_input = input("> ").lower()
@@ -47,15 +48,18 @@ def main_menu():
 			print_difficulty()
 			user_input = input("> ").lower()
 			if user_input == "easy":
-				difficulty = "easy"
+				player.difficulty = "easy"
+				print("\n") * 100
 				introduction()
 				break
 			elif user_input == "normal":
-				difficulty = "normal"
+				player.difficulty = "normal"	
+				print("\n") * 100
 				introduction()
 				break
 			elif user_input == "hard":
-				difficulty = "hard"
+				player.difficulty = "hard"
+				print("\n") * 100
 				introduction()
 				break
 			else:

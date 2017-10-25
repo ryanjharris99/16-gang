@@ -10,9 +10,8 @@ import sched, time, sys, platform, random
 if platform.system() == "Windows":
     import winsound
 import os 
+import player
 from combat import *
-
-difficulty = ""
 
 def list_of_items(items):
     """This function takes a list of items (see items.py for the definition) and
@@ -345,6 +344,7 @@ def main():
     schedule = sched.scheduler(time.time, time.sleep)
     xrayCount = 0
     command = []
+    difficulty = player.difficulty
 
     # Main game loop
     while True:
