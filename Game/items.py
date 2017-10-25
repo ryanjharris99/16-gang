@@ -363,6 +363,54 @@ item_ladder = {
 
 }
 
+item_key = {
+        
+    "id": "keys",
+
+    "name": "master key",
+
+    "recipe": [],
+    
+    "damage": 1,
+    
+    "energy": 0,
+
+    "description": "A collection of keys on a ring, one of them must be useful right?"
+
+}
+
+item_scalpel = {
+        
+    "id": "scalpel",
+
+    "name": "surgical scalpel",
+
+    "recipe": [],
+    
+    "damage": 5,
+    
+    "energy": 0,
+
+    "description": "A surgical scalpel, looks like it's been used before."
+
+}
+
+item_head = {
+        
+    "id": "head",
+
+    "name": "human head",
+
+    "recipe": [],
+    
+    "damage": 1,
+    
+    "energy": 0,
+
+    "description": "It's a severed human head, rotting around the wound, this is disgusting."
+
+}
 
 
-items_list = [item_pen, item_newspaper, item_patients_gown, item_card, item_bedsheet, item_suture, item_rope, item_gun, item_bullets ,item_xrayNote, item_atticNote, item_atticNote2, item_wardNote, item_WaitingNote, item_drink, item_chocolate, item_apple, item_loadedgun,item_parachute, item_map, item_ladder, item_keycard]
+
+items_list = [item_head, item_pen, item_newspaper, item_patients_gown, item_card, item_bedsheet, item_suture, item_rope, item_gun, item_bullets ,item_xrayNote, item_atticNote, item_atticNote2, item_wardNote, item_WaitingNote, item_drink, item_chocolate, item_apple, item_loadedgun,item_parachute, item_map, item_ladder, item_keycard, item_keycard, item_scalpel]

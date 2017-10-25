@@ -16,6 +16,8 @@ def checkEndings(current_room, command):
 	if player.player_hp <= 0:
 		died()
 		return True
+	if current_room["name"] == "Reception" and command[0] == "leave":
+		receptionEnding()
 
 
 def parachuteSurvive(survived, infected):

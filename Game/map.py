@@ -8,14 +8,14 @@ room_OT={
 	 It's chest wide open with a scalpel inserted between the fourth and fifth rib.  
 	 There are dozens of surgical drape sheets scattered around the room as if a savage animal had been set aloose... 
 	 You walk up to the body and are fixated upon the fresh bullet hole between the victims eyes.
-	 You look about more and there are plenty of surgial cuboards for you to look through.
+	 You notice that there are plenty of surgial cupboards for you to look through.
 	 """,
 
 	 "exits": {"left":"Patient_Room"},
 
 	 "items": [item_bedsheet, item_suture],
 
-	 "containers": {"tray": [],"cupboard": [],"corpse": [], "table":[], "floor":[item_bullets] }
+	 "containers": {"tray": [],"cupboard": [],"corpse": [item_scalpel], "table":[], "floor":[item_bullets] }
 
 }
 
@@ -48,7 +48,7 @@ room_Xray={
 
 	"items": [],
 
-	"containers": {"cupboard": [],"desk": [], "body":[], "floor": [item_xrayNote] }
+	"containers": {"cupboard": [],"desk": [], "body":[item_key], "floor": [item_xrayNote] }
 
 }
 
@@ -96,15 +96,18 @@ room_morgue={
 	"name": "Morgue",
 
 	"description":
-	"""    The lights in the corrider are flickering. As you walk into the morgue, you stumble upon coffins scattered around. Walls splattered with blood.
-        You've decided to examine each coffins. As you examine further, you start to realize movement from the bodies placed in the coffin.
-        Towards the last coffin, you come across a sign which says "Be Aware of Zombies".""",
+	"""    		The lights in the corridor are flickering. 
+		As you walk into the morgue, you stumble upon coffins scattered around. 
+		Walls splattered with blood.
+		The refrigerators seem to still be functional fortunately, else the smell would be deathly.
+
+        """,
 
 	"exits": {"upstairs":"Reception"},
 
 	"items": [item_rope],
 
-	"containers": {"cupboard": [],"drawers": [], "refrigerator":[]},
+	"containers": {"drawers": [], "refrigerator":[item_head]},
 
 }
 
@@ -112,10 +115,8 @@ room_ChildrenWard={
 	"name": "The Children's Ward",
 
 	"description":
-	"""     Right after you step foot into the Children's Ward, you are welcomed by whispering of children's voices.
-		 The room looked like it was never damaged
-         whcih brings a uneartly feeling. You come across a note left in the room.
-         Would the note benefit you in any way possible? 
+	"""     	Right after you step foot into the Children's Ward, you are welcomed by whispering of children's voices.
+		 The room looked like it was never damaged which brings a unearthly feeling. 
          You notice there is an opening above you but you would need to attach a ladder to get up there.""",
 
 	"exits": {"up":"Attic", "right":"Xray", "downstairs":"Patient_Room"},
@@ -130,9 +131,7 @@ room_PatientRoom={
 	"name": "The Patient's Room",
 
 	"description":
-	""" In one of the scariest night you woke up on a bed. You hear water droplets dripping on the window panes. 
-	First thing you realized is you are left alone in the darkness and you are unaware of your whereabouts. 
-	You then noticed you are wrapped around in a hospital gown. """,
+	"""    """,
 
 	"exits": {"right":"OT", "downstairs":"Reception", "upstairs":"Children_Ward"},
 

@@ -102,6 +102,8 @@ def print_menu(exits, room_items, inv_items):
             type_print("TAKE " + item["name"] + ".")
     if current_room["name"] == "The Children's Ward" and item_ladder in inventory:
         type_print("ATTACH the ladder to the attic")
+    if current_room["name"] == "Reception":
+        type_print("LEAVE through the front door.")
     print("")
     if energy > 16:
         type_print("You are full of energy!")
@@ -269,9 +271,18 @@ def execute_attach(command):
         inventory.remove(item_ladder)
         type_print("You have attached the ladder to the attic.")
 
+def execute_leave(command):
+    if current_room["name"] == "Reception":
+        if item_key in inventory:
+            checkEndings(current_room, command)
+        else:
+            type_print("You need the key!")
+    else:
+        type_print("You can't leave through there!")
+
 
 list_of_execute_functions = { "go": execute_go, "take": execute_take, "drop": execute_drop, "read": execute_read, "inspect": execute_read, "search": execute_search,
-"eat": execute_eat, "combine": execute_combine, "craft": execute_combine, "jump": execute_jump, "attach": execute_attach}
+"eat": execute_eat, "combine": execute_combine, "craft": execute_combine, "jump": execute_jump, "attach": execute_attach, "leave": execute_leave}
 
 def execute_command(command):
     """This function takes a command (a list of words as returned by
