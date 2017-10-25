@@ -14,7 +14,6 @@ def zombieAttack (typeOfAttack):
 	odds = 10
 
 	randomInteger = uniform(0, odds)
-	print(randomInteger)
 
 	if randomInteger <= chance:
 		return True #player has been infected
@@ -23,11 +22,11 @@ def zombieAttack (typeOfAttack):
 		return False
 
 
-while True:
+"""while True:
 	input()
 	if zombieAttack("bite") == True:
 		print("You feel an intense burn coming from within your veins themselves...")
 
 
-
+"""
 	

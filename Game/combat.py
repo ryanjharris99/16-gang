@@ -2,6 +2,7 @@ from gameparser import *
 
 import player
 import time
+from infectionChance import zombieAttack
 
 def attack(command):
 	
@@ -97,6 +98,7 @@ def combat(dificulty, zombieHP):
 	while saved_zombie_hp > 0:
 		if(players_turn == False):
 			type_print("zombie Attacks!")
+			player.infected = zombieAttack("bite")
 			player.player_hp -= random.randint(starting_damage_number, 10) * damage_modifier 
 			type_print("your health is now: " + str(player.player_hp))
 			if(player.player_hp <= 0):
