@@ -101,7 +101,7 @@ item_rope = {
 }
 
 item_gun = {
-    "id":"gun",
+    "id":"pistol",
 
     "name": "A classic pistol",
 
@@ -130,9 +130,9 @@ item_bullets = {
 
 item_loadedgun = {
     
-    "id":"gun_loaded",
+    "id":"loadedpistol",
 
-    "name": "A classic pistol, loaded",
+    "name": "a 'loadedpistol'",
 
     "recipe": [item_gun, item_bullets],
 
