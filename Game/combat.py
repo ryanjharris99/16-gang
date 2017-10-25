@@ -11,16 +11,16 @@ def attack(command):
 			if(com == item["id"]):
 				return item["damage"]
 
-	type_print("Thats not an item you can use")
-	type_print("you punch the zombie instead!")
+	type_print("Thats not an item you can use.")
+	type_print("You punch the zombie instead!")
 	return 1
 
 def run(command):
     if(random.randint(1, 40) >= 20):
-        type_print("you manage to run away")
+        type_print("You manage to run away")
         return -1
     else:
-        type_print("you couldn't run so you punched the zombie instead")
+        type_print("You couldn't run so you punched the zombie instead")
         return 1
 
 list_of_combat_functions = {"attack": attack, "hit": attack, "run": run, "escape": run}
@@ -40,9 +40,9 @@ def execute_combat_command(command):
 
 def menu():
 
-	type_print("You can HIT the zombie with an item")
-
-	type_print("You can RUN away")
+	type_print("You can:)
+	type_print("HIT the zombie with an item.")
+	type_print("RUN away.")
 
 	type_print("What do you want to do?")
 	
@@ -67,7 +67,7 @@ def combat(dificulty, zombieHP):
 	else:
 		damage_modifier = 2
 		starting_damage_number = 10
-	type_print("A zombie has appeared!!!")
+	type_print("A zombie has appeared!")
 
 	print(""" 
 
@@ -100,7 +100,7 @@ def combat(dificulty, zombieHP):
 			type_print("zombie Attacks!")
 			player.infected = zombieAttack("bite")
 			player.player_hp -= random.randint(starting_damage_number, 10) * damage_modifier 
-			type_print("your health is now: " + str(player.player_hp))
+			type_print("Your health is now: " + str(player.player_hp))
 			if(player.player_hp <= 0):
 				type_print("You were defeated!")
 				break

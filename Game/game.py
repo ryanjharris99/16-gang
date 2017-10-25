@@ -104,6 +104,8 @@ def print_menu(exits, room_items, inv_items):
         type_print("ATTACH the ladder to the attic")
     if current_room["name"] == "Reception":
         type_print("LEAVE through the front door.")
+    if current_room["name"] == "Morgue" and player.power_on == False:
+        type_print("FLIP the switch.")
     print("")
     if energy > 16:
         type_print("You are full of energy!")
@@ -155,9 +157,18 @@ def execute_go(command):
                     current_room = move(exits, direction)              
                 else:
                     type_print("This door requires a keycard!")
+                    pass
             else:
                 moved = True 
                 current_room = move(exits, direction)
+        elif current_room["name"] == "The Children's Ward" and direction == "right":
+            if player.power_on == True:
+                moved = True
+                current_room = move(exits, direction)
+            else:
+                type_print("You need to turn the power on first!")
+                pass
+
         else:
             moved = True 
             current_room = move(exits, direction)
@@ -275,14 +286,20 @@ def execute_leave(command):
     if current_room["name"] == "Reception":
         if item_key in inventory:
             checkEndings(current_room, command)
+            current_room = room_Outside
         else:
             type_print("You need the key!")
     else:
         type_print("You can't leave through there!")
 
+def execute_flip(command):
+    if current_room["name"] == "Morgue":
+        player.power_on = True
+        type_print("You flipped the switch and the room erupts into light, you hear machines powering up, the power is on!")
+
 
 list_of_execute_functions = { "go": execute_go, "take": execute_take, "drop": execute_drop, "read": execute_read, "inspect": execute_read, "search": execute_search,
-"eat": execute_eat, "combine": execute_combine, "craft": execute_combine, "jump": execute_jump, "attach": execute_attach, "leave": execute_leave}
+"eat": execute_eat, "combine": execute_combine, "craft": execute_combine, "jump": execute_jump, "attach": execute_attach, "leave": execute_leave, "flip": execute_flip}
 
 def execute_command(command):
     """This function takes a command (a list of words as returned by
@@ -386,7 +403,7 @@ def main():
     initiateRooms()
     schedule = sched.scheduler(time.time, time.sleep)
     xrayCount = 0
-    command = []
+    command = [""]
     difficulty = player.difficulty
     if difficulty == "easy":
         energyLoss = 120
@@ -401,7 +418,7 @@ def main():
         # Display game status (room description, inventory etc.)
         if checkEndings(current_room, command):
             if platform == "Windows":     
-                winsound.PlaySound(dir_sounds + "YouAreDead.wav" ,winsound.SND_FILENAME | winsound.SND_ASYNC)
+                winsound.PlaySound(dir_sounds + "dead.wav" ,winsound.SND_FILENAME | winsound.SND_ASYNC)
             break
         print_room(current_room)
         print_inventory_items(inventory)
@@ -409,7 +426,7 @@ def main():
             if xrayCount >= 5:
                 type_print("You have died")
                 if platform == "Windows":     
-                    winsound.PlaySound(dir_sounds + "YouAreDead.wav" ,winsound.SND_FILENAME | winsound.SND_ASYNC)
+                    winsound.PlaySound(dir_sounds + "dead.wav" ,winsound.SND_FILENAME | winsound.SND_ASYNC)
                 type_print("""Your skin starts to ripple with waves of pain, you fall to the floor with a overwhelming sense of nausea. 
                     The pain overtakes and your eyes slowly start to close to the sickening sound of the broken X-Ray machines.
                     Your eyes never open again...""")
@@ -431,7 +448,7 @@ def main():
 
         if checkEndings(current_room, command):
             if platform == "Windows":     
-                winsound.PlaySound(dir_sounds + "YouAreDead.wav" ,winsound.SND_FILENAME | winsound.SND_ASYNC)
+                winsound.PlaySound(dir_sounds + "dead.wav" ,winsound.SND_FILENAME | winsound.SND_ASYNC)
             break
 
         if timeSince(energyLossTime, getCurrentTime()) > energyLoss:

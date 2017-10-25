@@ -100,6 +100,7 @@ room_morgue={
 		As you walk into the morgue, you stumble upon coffins scattered around. 
 		Walls splattered with blood.
 		The refrigerators seem to still be functional fortunately, else the smell would be deathly.
+		There is a large switch at the back of the room, looks important.
 
         """,
 
@@ -115,9 +116,10 @@ room_ChildrenWard={
 	"name": "The Children's Ward",
 
 	"description":
-	"""     	Right after you step foot into the Children's Ward, you are welcomed by whispering of children's voices.
-		 The room looked like it was never damaged which brings a unearthly feeling. 
-         You notice there is an opening above you but you would need to attach a ladder to get up there.""",
+	"""		Right after you step foot into the Children's Ward, you are welcomed by whispering of children's voices.
+	     The room looked like it was never damaged which brings a unearthly feeling.
+         You notice there is an opening above you but you would need to attach a ladder to get up there.
+         You also see that there is a room behind a powered door""",
 
 	"exits": {"up":"Attic", "right":"Xray", "downstairs":"Patient_Room"},
 
@@ -140,6 +142,15 @@ room_PatientRoom={
 	"containers": {"drawers": [item_map], "bed":[], "gift":[item_card]},
 }
 
+room_Outside={
+	"name":"Ouside",
+
+	"items": [],
+
+	"containers": {}
+	
+}
+
 rooms ={
 "OT": room_OT,
 "Waiting_Room": room_Waiting,
@@ -148,6 +159,7 @@ rooms ={
 "Attic": room_attic,
 "Morgue": room_morgue,
 "Children_Ward": room_ChildrenWard,
-"Patient_Room": room_PatientRoom
+"Patient_Room": room_PatientRoom,
+"Outside":room_Outside
 	
 }

@@ -16,8 +16,9 @@ def checkEndings(current_room, command):
 	if player.player_hp <= 0:
 		died()
 		return True
-	if current_room["name"] == "Reception" and command[0] == "leave":
+	if current_room["name"] == "Outside" and command[0] == "leave":
 		receptionEnding()
+		return True
 
 
 def parachuteSurvive(survived, infected):
@@ -28,7 +29,7 @@ def died():
 
 def receptionEnding():
 	type_print("""You leave the reception and you’re greeted by the blinding light of day, a light you thought you’d never see. 
-		You tall fences all surrounding the hospital. You then spot police lights flashing behind those fences,
+		You see tall fences all surrounding the hospital. You then spot police lights flashing behind those fences,
 		 you stagger towards the lights exhausted from the happenings within the derelict hospital. 
 You are greeted at the fence by police officers clothed in massive yellow suits with the writing “BIOHAZARD” all over them.
  One of the men asked whilst looking astonished: “Where did you come from?”
@@ -44,20 +45,25 @@ You are greeted at the fence by police officers clothed in massive yellow suits 
 		 “I’m so sorry.” 
 		 BANG. 
 		 You came so close but so far.
-		 You Die.
-
-
-  ________                                                 ._.
- /  _____/_____    _____   ____     _______  __ ___________| |
-/   \  ___\__  \  /     \_/ __ \   /  _ \  \/ // __ \_  __ \ |
-\    \_\  \/ __ \|  Y Y  \  ___/  (  <_> )   /\  ___/|  | \/\|
- \______  (____  /__|_|  /\___  >  \____/ \_/  \___  >__|   __
-        \/     \/      \/     \/                   \/       \/
-""") 
+		 You Die."""
+		 ) 
 
 	else:
 		type_print("The officer smiles and says “He’s clean. Patch him up and get him some water, he’s been through a lot…”")
-		print(""" 
+		print()
+
+def print_game_over():
+	type_print("""
+	  ________                                                 ._.
+	 /  _____/_____    _____   ____     _______  __ ___________| |
+	/   \  ___\__  \  /     \_/ __ \   /  _ \  \/ // __ \_  __ \ |
+	\    \_\  \/ __ \|  Y Y  \  ___/  (  <_> )   /\  ___/|  | \/\|
+	 \______  (____  /__|_|  /\___  >  \____/ \_/  \___  >__|   __
+	        \/     \/      \/     \/                   \/       \/
+	""")
+
+def print_you_win():
+	type_print(""" 
 _____.___.               __      __.__         ._.
 \__  |   | ____  __ __  /  \    /  \__| ____   | |
  /   |   |/  _ \|  |  \ \   \/\/   /  |/    \  | |
@@ -65,5 +71,3 @@ _____.___.               __      __.__         ._.
  / ______|\____/|____/    \__/\  / |__|___|  /  __
  \/                            \/          \/   \/
 """)
-
-
