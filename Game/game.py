@@ -10,7 +10,7 @@ import sched, time, sys, platform, random
 if platform.system() == "Windows":
     import winsound
 import os 
-dir_sounds = os.path.dirname(os.path.realpath(__file__)) + "\sounds\\"
+from combat import *
 
 difficulty = ""
 
@@ -38,16 +38,6 @@ def print_containers(container):
 
 
 
-def print_inventory_items(items):
-    """This function takes a list of inventory items and displays it nicely, in a
-    manner similar to print_room_items(). The only difference is in formatting:
-    print "You have ..." instead of "There is ... here.". 
-    """
-    items_string = list_of_items(items)
-    if items_string != "":
-        type_print("INVENTORY:\n")
-        for item in items:
-            type_print(" - " + item["name"], 0.0001)
 
 
 def print_room(room):
@@ -343,16 +333,7 @@ def move(exits, direction):
     moved = True
     return rooms[exits[direction]]
 
-def type_print(text, speed = 0.02):
-    if platform.system() == "Windows":
-        winsound.PlaySound(dir_sounds + "typing.wav" ,winsound.SND_FILENAME | winsound.SND_ASYNC)
-    for c in text:
-        sys.stdout.write( '%s' % c ) #https://stackoverflow.com/questions/9246076/how-to-print-one-character-at-a-time-on-one-line
-        sys.stdout.flush()
-        time.sleep(speed)
-    print("\n")  
-    if platform.system() == "Windows":
-        winsound.PlaySound(None, winsound.SND_PURGE)
+
 
 
 # This is the entry point of our program
@@ -363,10 +344,14 @@ def main():
     initiateRooms()
     schedule = sched.scheduler(time.time, time.sleep)
     xrayCount = 0
+    command = []
 
     # Main game loop
     while True:
+
         # Display game status (room description, inventory etc.)
+        if checkEndings(current_room, command):
+            break
         print_room(current_room)
         print_inventory_items(inventory)
         if current_room["name"] == "Xray Room":
@@ -382,7 +367,9 @@ def main():
 
         # Execute the player's command
         execute_command(command)
-
+        if(command[0] == "go"):
+            if(random.randint(1, 10) > 4):
+                combat(difficulty, random.randint(2, 10))
         if checkEndings(current_room, command):
             break
 

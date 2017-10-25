@@ -5,6 +5,8 @@ item_newspaper = {
 
     "recipe": [],
 
+    "damage": 0,
+
     "energy": 0,
 
     "description": 
@@ -20,6 +22,8 @@ item_pen = {
 
     "recipe": [],
 
+    "damage": 1,
+
     "energy": 0,
 
     "description": "A basic ballpoint pen."
@@ -33,6 +37,8 @@ item_patients_gown = {
 
     "recipe": [],
 
+    "damage": 0,
+
     "energy": 0,
 
     "description": "A basic patients gown to keep you warm."
@@ -44,6 +50,8 @@ item_card = {
     "name": "A get well soon card",
 
     "recipe": [],
+
+    "damage": 0,
 
     "energy": 0,
 
@@ -57,6 +65,8 @@ item_bedsheet = {
 
     "recipe": [],
 
+    "damage": 0,
+
     "energy": 0,
 
     "description": "A pile of bloody bedsheets."
@@ -68,6 +78,8 @@ item_suture = {
     "name": "Surgical suture kit",
 
     "recipe": [],
+
+    "damage": 3,
 
     "energy": 0,
 
@@ -81,6 +93,8 @@ item_rope = {
 
     "recipe": [],
 
+    "damage": 2,
+
     "energy": 0,
 
     "description": "a thick, dusty rope probably left over from the renovation of the hospital."
@@ -93,14 +107,12 @@ item_gun = {
 
     "recipe": [],
 
+    "damage": 4,
+
     "energy": 0,
 
     "description": "oh no! there are no bullets in the pistol, maybe there are lying around somewhere else..."
 }
-
-
-
-
 
 item_bullets = {
     "id": "bullets",
@@ -108,6 +120,8 @@ item_bullets = {
     "name": "bunch of bullets",
 
     "recipe": [],
+
+    "damage": 1,
 
     "energy": 0,
 
@@ -122,6 +136,8 @@ item_loadedgun = {
 
     "recipe": [item_gun, item_bullets],
 
+    "damage": 10,
+
     "energy": 0,
 
     "description": "Shiny and deadly"
@@ -133,6 +149,8 @@ item_xrayNote = {
     "name": "research notes",
 
     "recipe": [],
+
+    "damage": 0,
 
     "energy": 0,
 
@@ -146,6 +164,8 @@ item_atticNote = {
 
     "recipe": [],
 
+    "damage": 1,
+
     "energy": 0,
 
     "description": """ how to: construct a parachute, items required: a large sheet, rope, tape and thread  """
@@ -157,6 +177,8 @@ item_atticNote2 = {
     "name": "crumpled up paer",
 
     "recipe": [],
+
+    "damage": 0,
 
     "energy": 0,
 
@@ -173,6 +195,8 @@ item_wardNote = {
 
     "energy": 0,
 
+    "damage": 0,
+
     "description": " a drawing of zombies "
 }
 
@@ -183,6 +207,8 @@ item_WaitingNote = {
 
     "recipe": [],
 
+    "damage": 0,
+    
     "energy": 0,
 
     "description": "whoops! this is isn't a note just a crumpled up tissue"
@@ -194,6 +220,8 @@ item_drink = {
     "name": "Energy drink",
 
     "recipe": [],
+
+    "damage": 1,
 
     "energy": 20,
 
@@ -207,6 +235,8 @@ item_chocolate = {
 
     "recipe": [],
 
+    "damage": 1,
+
     "energy": 10,
 
     "description": "A packaged chocolate bar, your favourite kind too"
@@ -218,6 +248,8 @@ item_apple = {
     "name": "apple",
 
     "recipe": [],
+
+    "damage": 1,
 
     "energy": 5,
 
@@ -231,6 +263,8 @@ item_card= {
 
     "recipe": [],
 
+    "damage": 0,
+
     "energy": 0,
 
     "description": "A get well soon card left to you by your family."
@@ -243,7 +277,9 @@ item_parachute = {
     "name": "parachute",
 
     "recipe": [item_rope, item_suture, item_patients_gown, item_bedsheet],
-
+    
+    "damage": 2,
+    
     "energy": 0,
 
     "description": "A parachute made from bedsheets, will this work? who knows!"

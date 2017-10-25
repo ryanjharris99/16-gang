@@ -1,6 +1,11 @@
 import string
 import items
+import sched, time, sys, platform, random
+if platform.system() == "Windows":
+    import winsound
+import os 
 
+dir_sounds = os.path.dirname(os.path.realpath(__file__)) + "\sounds\\"
 # List of key words (feel free to add more)
 skip_words = ['a', 'about', 'all', 'an', 'another', 'any', 'around', 'at',
               'bad', 'beautiful', 'been', 'better', 'big', 'can', 'every', 'for',
@@ -11,6 +16,32 @@ skip_words = ['a', 'about', 'all', 'an', 'another', 'any', 'around', 'at',
               'that', 'the', 'then', 'this', 'those', 'through', 'till', 'to',
               'towards', 'until', 'us', 'want', 'we', 'what', 'when', 'why',
               'wish', 'with', 'would']
+
+def list_of_items(items):
+    """This function takes a list of items (see items.py for the definition) and
+    returns a comma-separated list of item names (as a string).
+    """
+
+    item_list = ""
+    for item in items:
+        if item_list != "":
+            item_list += ", "
+            item_list += item["name"]
+        else:
+            item_list += item["name"]
+    return item_list
+
+def print_inventory_items(items):
+    """This function takes a list of inventory items and displays it nicely, in a
+    manner similar to print_room_items(). The only difference is in formatting:
+    print "You have ..." instead of "There is ... here.". 
+    """
+    items_string = list_of_items(items)
+    if items_string != "":
+        type_print("INVENTORY:\n")
+        for item in items:
+            type_print(" - " + item["name"], 0.0001)
+
 
 
 def filter_words(words, skip_words):
@@ -27,7 +58,17 @@ def filter_words(words, skip_words):
 
     return filtered_list
 
-    
+def type_print(text, speed = 0.02):
+    if platform.system() == "Windows":
+        winsound.PlaySound(dir_sounds + "typing.wav" ,winsound.SND_FILENAME | winsound.SND_ASYNC)
+    for c in text:
+        sys.stdout.write( '%s' % c ) #https://stackoverflow.com/questions/9246076/how-to-print-one-character-at-a-time-on-one-line
+        sys.stdout.flush()
+        time.sleep(speed)
+    print("\n")  
+    if platform.system() == "Windows":
+        winsound.PlaySound(None, winsound.SND_PURGE)
+
 def remove_punct(text):
     """This function is used to remove all punctuation
     marks from a string. Spaces do not count as punctuation and should

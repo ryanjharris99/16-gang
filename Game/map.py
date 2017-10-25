@@ -113,7 +113,7 @@ room_ChildrenWard={
          whcih brings a uneartly feeling. You come across a note left in the room.
          Would the note benefit you in any way possible? """,
 
-	"exits": {"up":"Attic", "right":"Xray_room", "downstairs":"Patient_Room"},
+	"exits": {"up":"Attic", "right":"Xray", "downstairs":"Patient_Room"},
 
 	"items": [item_drink, item_wardNote],
 
@@ -125,7 +125,9 @@ room_PatientRoom={
 	"name": "The Patient's Room",
 
 	"description":
-	""" """,
+	""" In one of the scariest night you woke up on a bed. You hear water droplets dripping on the window panes. 
+	First thing you realized is you are left alone in the darkness and you are unaware of your whereabouts. 
+	You then noticed you are wrapped around in a hospital gown. """,
 
 	"exits": {"right":"OT", "downstairs":"Reception", "upstairs":"Children_Ward"},
 
