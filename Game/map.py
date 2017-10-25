@@ -40,8 +40,7 @@ room_Xray={
 	"""    Immediately after entering the room you are greeted by the humming of grand x-ray machines and a dingey ultra green light...
 	The machines are battered and on however there is no obvious way of turning it off especially as the contorl panal is damaged.
 	With each step around the room the faint sound of crunching paper arises above the humming of machines. 
-	You then realise there are research notes all over the floor.
-	Could there be any useful information amongst the scattered notes?
+	You also notice a body in laid in the corner of the room, it seems as if he was a janitor of some kind.
 
 	  """,
 

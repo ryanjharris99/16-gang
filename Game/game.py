@@ -284,9 +284,12 @@ def execute_command(command):
     if 0 == len(command):
         return
 
-    for key in list_of_execute_functions:
-        if(command[0] == key):
-            list_of_execute_functions[key](command)
+    if len(command) == 1:
+        type_print(command[0] + " what?")
+    else:
+        for key in list_of_execute_functions:
+            if(command[0] == key):
+                list_of_execute_functions[key](command)
 
             
 
