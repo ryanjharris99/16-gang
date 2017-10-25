@@ -32,7 +32,7 @@ def main():
 
 def xrayRoomMessage ():
 #https://stackoverflow.com/questions/306400/how-to-randomly-select-an-item-from-a-list
-	Messages = ["You're starting to feel drowsy...", "You're Hands are starting to sweat...","something doesn't feel right...","You can start to feel weak..."]
+	Messages = ["You're starting to feel drowsy...", "Your Hands are starting to sweat...","Something doesn't feel right...","You start to feel weak..."]
 	return(random.choice(Messages))
 
 

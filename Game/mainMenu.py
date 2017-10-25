@@ -1,7 +1,13 @@
 import player
 import time
+import os
+from pygame import mixer
 from gameparser import type_print
 from game import main
+
+mixer.init()
+menu_music = mixer.music.load(os.path.dirname(os.path.realpath(__file__)) + "\sounds\menumusic.wav")
+
 def print_title():
 	print(""" .-. .-. .---.    .---. ,---.  ,-. _______  .--.  ,-.      _____   
  | | | |/ .-. )  ( .-._)| .-.\ |(||__   __|/ /\ \ | |     /___  /  
@@ -28,6 +34,8 @@ def print_difficulty():
 	type_print("HARD - Good luck")
 
 def main_menu():
+	mixer.music.play()
+	mixer.music.set_volume(0.1)
 	current_menu = "main_menu"
 	print_title()
 	while True:
@@ -53,16 +61,19 @@ def main_menu():
 			if user_input == "easy":
 				player.difficulty = "easy"
 				print("\n" * 100)
+				mixer.music.stop()
 				introduction()
 				break
 			elif user_input == "normal":
 				player.difficulty = "normal"	
 				print("\n" * 100)
+				mixer.music.stop()
 				introduction()
 				break
 			elif user_input == "hard":
 				player.difficulty = "hard"
 				print("\n" * 100)
+				mixer.music.stop()
 				introduction()
 				break
 			else:

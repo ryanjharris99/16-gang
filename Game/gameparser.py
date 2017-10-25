@@ -1,11 +1,10 @@
 import string
 import items
-import sched, time, sys, platform, random
-if platform.system() == "Windows":
-    import winsound
-import os 
+import sched, time, random, os, sys
+from pygame import mixer
 
-dir_sounds = os.path.dirname(os.path.realpath(__file__)) + "\sounds\\"
+mixer.init()
+typing = mixer.Sound(os.path.dirname(os.path.realpath(__file__)) + "\sounds\\typing.wav")
 # List of key words (feel free to add more)
 skip_words = ['a', 'about', 'all', 'an', 'another', 'any', 'around', 'at',
               'bad', 'beautiful', 'been', 'better', 'big', 'can', 'every', 'for',
@@ -16,6 +15,8 @@ skip_words = ['a', 'about', 'all', 'an', 'another', 'any', 'around', 'at',
               'that', 'the', 'then', 'this', 'those', 'through', 'till', 'to',
               'towards', 'until', 'us', 'want', 'we', 'what', 'when', 'why',
               'wish', 'with', 'would']
+
+
 
 def list_of_items(items):
     """This function takes a list of items (see items.py for the definition) and
@@ -59,15 +60,13 @@ def filter_words(words, skip_words):
     return filtered_list
 
 def type_print(text, speed = 0.02):
-    if platform.system() == "Windows":
-        winsound.PlaySound(dir_sounds + "typing.wav" ,winsound.SND_FILENAME | winsound.SND_ASYNC)
+    typing.play()
     for c in text:
         sys.stdout.write( '%s' % c ) #https://stackoverflow.com/questions/9246076/how-to-print-one-character-at-a-time-on-one-line
         sys.stdout.flush()
         time.sleep(speed)
     print("\n")  
-    if platform.system() == "Windows":
-        winsound.PlaySound(None, winsound.SND_PURGE)
+    typing.stop()
 
 def remove_punct(text):
     """This function is used to remove all punctuation
@@ -79,7 +78,6 @@ def remove_punct(text):
     for char in text:
         if not (char in string.punctuation):
             no_punct = no_punct + char
-
     return no_punct
 
 

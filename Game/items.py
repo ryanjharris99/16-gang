@@ -1,7 +1,7 @@
 item_newspaper = {
     "id": "newspaper",
 
-    "name": "A newspaper",
+    "name": "newspaper",
 
     "recipe": [],
 
@@ -11,7 +11,10 @@ item_newspaper = {
 
     "description": 
 
-    """HEADLINE: HYSTERIA IN THE HOSPITAL """
+    """
+    HEADLINE: HYSTERIA IN THE HOSPITAL
+    There are stories about bitings in the hospital.
+    What the hell?"""
 
 }
 
@@ -141,7 +144,7 @@ item_xrayNote = {
 
     "energy": 0,
 
-    "description": " CAUTION! ZOMBIES WAKE UP AT MIDNIGHT... "
+    "description": "DAY 28: Specimen is still active, but is slowly becoming more and more docile.\n More tests are required."
 }
 
 item_atticNote = {
@@ -155,7 +158,11 @@ item_atticNote = {
 
     "energy": 0,
 
-    "description": """ how to: construct a parachute, items required: a large sheet, rope, tape and thread  """
+    "description": """
+    Looks like a rudimentary guide to crafting a parachute.
+    It says that the items required: a large sheet, rope, tape and a smaller sheet.
+    My gown might work, could be worth a try?
+    """
 }
 
 item_atticNote2 = {
@@ -184,7 +191,7 @@ item_wardNote = {
 
     "damage": 0,
 
-    "description": " a drawing of zombies "
+    "description": "A drawing of zombies in crayons, a typical childhood nightmare I guess?"
 }
 
 item_WaitingNote = {
@@ -198,7 +205,7 @@ item_WaitingNote = {
     
     "energy": 0,
 
-    "description": "whoops! this is isn't a note just a crumpled up tissue"
+    "description": "It's... a used tissue... ew..."
 }
 
 item_drink = {

@@ -4,6 +4,7 @@ import player
 global inventory
 global hp
 import time
+from pygame import mixer
 
 
 
@@ -13,18 +14,18 @@ def checkEndings(current_room, command):
 		if item_parachute in player.inventory:
 			parachuteSurvive()
 			return True
-
 		else:
 			parachuteDie()
 			return True
 	if player.player_hp <= 0:
 		died()
 		return True
-	if current_room["name"] == "Outside" and command[0] == "leave":
+	if current_room["name"] == "Reception" and command[0] == "leave" and item_key in player.inventory:
 		receptionEnding()
 		return True
 	if player.energy <= 0:
 		exhaustion()
+		return True
 
 
 
@@ -59,7 +60,7 @@ def receptionEnding():
   		"Several seconds pass with the man gazing at the device he's using to examine your blood.",
  		"The machine beeps and..."]
 	for text in texty:
-		type_print(texty)
+		type_print(text)
 		time.sleep(1)
 
 	if player.infected == True:
@@ -78,6 +79,8 @@ def receptionEnding():
 		print_you_win()
 
 def print_game_over():
+	death = mixer.Sound(os.path.dirname(os.path.realpath(__file__)) + "\sounds\\dead.wav")
+	death.play()
 	type_print("""
 	  ________                                                 ._.
 	 /  _____/_____    _____   ____     _______  __ ___________| |

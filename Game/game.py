@@ -6,12 +6,10 @@ from timeFunction import *
 from objectAllocation import *
 from mainMenu import *
 from endings import *
-import sched, time, sys, platform, random
-if platform.system() == "Windows":
-    import winsound
-import os 
+import sched, time, random
 import player
 from combat import *
+from pygame import mixer
 
 def list_of_items(items):
     """This function takes a list of items (see items.py for the definition) and
@@ -33,7 +31,7 @@ def print_room_items(room):
 
 def print_containers(container):
     """This function prints all of the containers in a given room"""
-    type_print("SEARCH the " + container + ".", 0.001)
+    type_print("SEARCH the " + container + ".")
 
 
 
@@ -72,7 +70,7 @@ def print_exit(direction, leads_to):
 
     GO <EXIT NAME UPPERCASE> to <where it leads>.
     """
-    type_print("GO " + direction.upper() + " to " + leads_to + ".", 0.001)
+    type_print("GO " + direction.upper() + " to " + leads_to + ".")
 
 
 def print_menu(exits, room_items, inv_items):
@@ -95,8 +93,8 @@ def print_menu(exits, room_items, inv_items):
         print_exit(direction, exit_leads_to(exits, direction))
     for container in current_room["containers"]:
         print_containers(container)
-    type_print("INSPECT inventory items.", 0.001)
-    type_print("EAT inventory items.", 0.001)
+    type_print("INSPECT inventory items.")
+    type_print("EAT inventory items.")
     if len(current_room["items"]) > 0:
         for item in current_room["items"]:
             type_print("TAKE " + item["name"] + ".")
@@ -106,6 +104,8 @@ def print_menu(exits, room_items, inv_items):
         type_print("LEAVE through the front door.")
     if current_room["name"] == "Morgue" and player.power_on == False:
         type_print("FLIP the switch.")
+    if current_room["name"] == "Attic":
+        type_print("JUMP through the window.")
     print("")
     if energy > 16:
         type_print("You are full of energy!")
@@ -283,10 +283,9 @@ def execute_attach(command):
         type_print("You have attached the ladder to the attic.")
 
 def execute_leave(command):
-    if player.current_room["name"] == "Reception":
+    if current_room["name"] == "Reception":
         if item_key in inventory:
-            checkEndings(current_room, command)
-            current_room = room_Outside
+            pass
         else:
             type_print("You need the key!")
     else:
@@ -392,11 +391,17 @@ def move(exits, direction):
     moved = True
     return rooms[exits[direction]]
 
-
+def play_music():
+    mixer.music.load(os.path.dirname(os.path.realpath(__file__)) + "\sounds\\ambient" + str(random.randint(1,3)) + ".wav")
+    mixer.music.play()
+    mixer.music.set_volume(0.1)
+    for i in range(0,10):
+        mixer.music.queue(os.path.dirname(os.path.realpath(__file__)) + "\sounds\\ambient" + str(random.randint(1,3)) + ".wav")
 
 
 # This is the entry point of our program
 def main():
+    play_music()
     global energy
     gameStart = getCurrentTime() #time the game started
     energyLossTime = getCurrentTime() #time since energy was last lost
@@ -406,28 +411,24 @@ def main():
     command = [""]
     difficulty = player.difficulty
     if difficulty == "easy":
-        energyLoss = 120
+        energyLoss = 240
     elif difficulty == "normal":
-        energyLoss = 60
+        energyLoss = 180
     else:
-        energyLoss = 30
+        energyLoss = 100
 
     # Main game loop
     while True:
-
         # Display game status (room description, inventory etc.)
         if checkEndings(current_room, command):
-            if platform == "Windows":     
-                winsound.PlaySound(dir_sounds + "dead.wav" ,winsound.SND_FILENAME | winsound.SND_ASYNC)
             break
         print_room(current_room)
         print_inventory_items(inventory)
         if current_room["name"] == "Xray Room":
             if xrayCount >= 5:
                 type_print("You have died")
-                if platform == "Windows":     
-                    winsound.PlaySound(dir_sounds + "dead.wav" ,winsound.SND_FILENAME | winsound.SND_ASYNC)
-                type_print("""Your skin starts to ripple with waves of pain, you fall to the floor with a overwhelming sense of nausea. 
+                type_print("""
+                    Your skin starts to ripple with waves of pain, you fall to the floor with a overwhelming sense of nausea. 
                     The pain overtakes and your eyes slowly start to close to the sickening sound of the broken X-Ray machines.
                     Your eyes never open again...""")
                 print_game_over()
@@ -447,8 +448,6 @@ def main():
                     combat(difficulty, random.randint(2, 10))
 
         if checkEndings(current_room, command):
-            if platform == "Windows":     
-                winsound.PlaySound(dir_sounds + "dead.wav" ,winsound.SND_FILENAME | winsound.SND_ASYNC)
             break
 
         if timeSince(energyLossTime, getCurrentTime()) > energyLoss:
