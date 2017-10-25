@@ -29,7 +29,7 @@ room_Waiting={
 
 	"items": [item_apple, item_WaitingNote, item_gun],
 
-	"containers": {"cupboard": [], }
+	"containers": {"cupboard": [], "seats": [], "floor": [item_ladder] }
 	
 }
 
@@ -87,7 +87,9 @@ room_attic={
 
 	"items": [item_atticNote2, item_atticNote, item_rope],
 
-	"containers": {"cupboard": [],"machine": [],"boxes": []}
+	"containers": {"cupboard": [],"machine": [],"boxes": []},
+
+	"ladder": False
 
 }
 
@@ -103,16 +105,19 @@ room_morgue={
 
 	"items": [item_rope],
 
-	"containers": {"cupboard": [],"drawers": [], "refrigerator":[]}
+	"containers": {"cupboard": [],"drawers": [], "refrigerator":[]},
+
 }
 
 room_ChildrenWard={
 	"name": "The Children's Ward",
 
 	"description":
-	""" Right after you step foot into the Children's Ward, you are welcomed by whispering of children's voices. The room looked like it was never damaged
+	"""     Right after you step foot into the Children's Ward, you are welcomed by whispering of children's voices.
+		 The room looked like it was never damaged
          whcih brings a uneartly feeling. You come across a note left in the room.
-         Would the note benefit you in any way possible? """,
+         Would the note benefit you in any way possible? 
+         You notice there is an opening above you but you would need to attach a ladder to get up there.""",
 
 	"exits": {"up":"Attic", "right":"Xray", "downstairs":"Patient_Room"},
 
