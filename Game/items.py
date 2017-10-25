@@ -249,9 +249,55 @@ item_parachute = {
     "description": "A parachute made from bedsheets, will this work? who knows!"
 }
 
+item_map = {
+
+    "id": "map",
+
+    "name": "map of the hospital",
+
+    "recipe": [],
+
+    "energy": 0,
+
+    "description": """
+
+h::::::::::::::::::::::::::::::::::::::::::::::::::::::::::y
+s                       -........-                         o
+s                       : ATTIC  :                         o
+s                       /........:                         o
+s                          :  :                            o
+s                          :  :                            o
+s                      ....-..-...-         ............-  o
+s                      : CHILDREN'S:         :   XRAY    : o
+s                      :   WARD   :........./    ROOM    : o
+s                      `...:..:....         `............  o
+s                          :  :                            o
+s                          :  :                            o
+s                          :  :                            o
+s                        `--..-..:........./```````````.-  o
+s                        .P. ROOM:         : OPERATING  :  o
+s                        `:-....-:........./  THEATRE  .-  o
+s                          :  `-            ```````````    o
+s                          :  `-                           o
+s                          :  `-                           o
+s  .............        -..-...-... -                      o
+s  :  WAITING  /......../ RECEPTION :                      o
+s  :   ROOM    /......../           :                      o
+s  -...........-        -..-...-... :                      o
+s                          -`  :                           o
+s                          :`  :                           o
+s                       `..:...:...`                       o
+s                       :   MORGUE :                       o
+s                       :          :                       o
+s                       `..........`                       o
+y::::::::::::::::::::::::::::::::::::::::::::::::::::::::::y
+"""
+    
+}
 
 
 
 
 
-#items_list = [item_pen, item_newspaper, item_patients_gown, item_card, item_bedsheet, item_suture, item_rope, item_gun, item_bullets ,item_xrayNote, item_atticNote, item_atticNote2, item_wardNote, item_WaitingNote, item_drink, item_chocolate, item_fruit, item_loadedgun,item_parachute]
+
+items_list = [item_pen, item_newspaper, item_patients_gown, item_card, item_bedsheet, item_suture, item_rope, item_gun, item_bullets ,item_xrayNote, item_atticNote, item_atticNote2, item_wardNote, item_WaitingNote, item_drink, item_chocolate, item_apple, item_loadedgun,item_parachute, item_map]

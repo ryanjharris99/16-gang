@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 from map import rooms
 from player import *
 from items import *
@@ -29,7 +27,10 @@ def list_of_items(items):
         else:
             item_list += item["name"]
     return item_list
-        
+def print_room_items(room):
+    items_string = list_of_items(room["items"])
+    if items_string != "":
+        type_print("There is " + items_string + " here.\n")    
 
 def print_containers(container):
     """This function prints all of the containers in a given room"""
@@ -97,6 +98,7 @@ def print_menu(exits, room_items, inv_items):
 
     """
     global energy
+    print_room_items(current_room)
     type_print("You can:")
     # Iterate over available exits
     for direction in exits:
@@ -106,7 +108,11 @@ def print_menu(exits, room_items, inv_items):
         print_containers(container)
     type_print("INSPECT inventory items.", 0.001)
     type_print("EAT inventory items.", 0.001)
+    if len(current_room["items"]) > 0:
+        for item in current_room["items"]:
+            type_print("TAKE " + item["name"] + ".")
     print("")
+    
     if energy > 16:
         type_print("You are full of energy!")
     elif energy > 12:
@@ -117,9 +123,6 @@ def print_menu(exits, room_items, inv_items):
         type_print("You are very tired.")
     elif energy > 0:
         type_print("You are about to faint, eat something!")
-    #
-    # COMPLETE ME!
-    #
     
     type_print("What do you want to do?")
 
@@ -184,7 +187,10 @@ def execute_read(command):
     global inventory
     for item in inventory:
         if item_id == item["id"]:
-            type_print(item["description"])
+            if item["id"] != "map":
+                type_print(item["description"])
+            else:
+                print(item["description"])
 
 def execute_search(command):
     """This function searches a given container and adds any items in it to the 

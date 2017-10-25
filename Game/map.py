@@ -11,7 +11,7 @@ room_OT={
 	 You look about more and there are plenty of surgial cuboards for you to look through.
 	 """,
 
-	 "exits": {"left":"Patient_Room", "right":"Xray"},
+	 "exits": {"left":"Patient_Room"},
 
 	 "items": [item_bedsheet, item_suture],
 
@@ -25,11 +25,11 @@ room_Waiting={
 	"description":
 	"""    You walk in and there is an eerie silence in the derelict room, nothing to search through only rows of empty seats...""",
 
-	"exits": {"right":"Reception", "left":"Patient_Room"},
+	"exits": {"right":"Reception"},
 
 	"items": [item_apple, item_WaitingNote, item_gun],
 
-	"containers": {"cupboard": [], }  
+	"containers": {"cupboard": [], }
 	
 }
 
@@ -45,7 +45,7 @@ room_Xray={
 
 	  """,
 
-	"exits": {"left":"OT"},
+	"exits": {"left":"Children_Ward"},
 
 	"items": [],
 
@@ -63,7 +63,7 @@ room_reception={
     The newspaper could explain what has happened to the town.
     You hear footsteps from upstairs and splitting screams from distances outside.""",
 
-	"exits": {"left":"Waiting_Room", "right":"Children_Ward"},
+	"exits": {"left":"Waiting_Room", "down":"Morgue"},
 
 	"items": [item_newspaper, item_apple],
 
@@ -98,7 +98,7 @@ room_morgue={
         You've decided to examine each coffins. As you examine further, you start to realize movement from the bodies placed in the coffin.
         Towards the last coffin, you come across a sign which says "Be Aware of Zombies".""",
 
-	"exits": {"up":"Reception"},
+	"exits": {"upstairs":"Reception"},
 
 	"items": [item_rope],
 
@@ -113,7 +113,7 @@ room_ChildrenWard={
          whcih brings a uneartly feeling. You come across a note left in the room.
          Would the note benefit you in any way possible? """,
 
-	"exits": {"up":"Attic", "left":"Reception"},
+	"exits": {"up":"Attic", "right":"Xray_room", "downstairs":"Patient_Room"},
 
 	"items": [item_drink, item_wardNote],
 
@@ -127,11 +127,11 @@ room_PatientRoom={
 	"description":
 	""" """,
 
-	"exits": {"right":"Waiting_Room", "left":"OT"},
+	"exits": {"right":"OT", "downstairs":"Reception", "upstairs":"Children_Ward"},
 
 	"items": [item_chocolate],
 
-	"containers": {"drawers": [], "bed":[], "gift":[item_card]}
+	"containers": {"drawers": [item_map], "bed":[], "gift":[item_card]},
 }
 
 rooms ={
