@@ -6,7 +6,12 @@ from gameparser import type_print
 from game import main
 
 mixer.init()
-menu_music = mixer.music.load(os.path.dirname(os.path.realpath(__file__)) + "\sounds\menumusic.wav") #The music to be played in the menu
+print(os.path.isdir(os.getcwd() + "\sounds"))
+print(os.getcwd() + "\sounds")
+if os.path.isdir(os.getcwd() + "\sounds"):
+	menu_music = mixer.music.load(os.path.dirname(os.path.realpath(__file__)) + "\sounds\menumusic.wav") #The music to be played in the menu
+	mixer.music.play()
+	mixer.music.set_volume(0.1)
 
 def print_title(): #ASCII title of the game
 	print(""" .-. .-. .---.    .---. ,---.  ,-. _______  .--.  ,-.      _____   
@@ -34,8 +39,6 @@ def print_difficulty():#Difficulty options
 	type_print("HARD - Good luck")
 
 def main_menu(): #The main loop for the menu
-	mixer.music.play()
-	mixer.music.set_volume(0.1)
 	current_menu = "main_menu"
 	print_title()
 	while True:#Until the loop is broken

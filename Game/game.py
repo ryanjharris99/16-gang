@@ -398,10 +398,11 @@ def move(exits, direction):
     return rooms[exits[direction]]
 
 def play_music():
-    mixer.music.set_volume(0.1)
-    if mixer.music.get_busy() == 0:
-        mixer.music.load(os.path.dirname(os.path.realpath(__file__)) + "\sounds\\ambient" + str(random.randint(1,3)) + ".wav")
-        mixer.music.play()
+    if os.path.isdir(os.getcwd() + "\sounds"):
+        mixer.music.set_volume(0.1)
+        if mixer.music.get_busy() == 0:
+            mixer.music.load(os.path.dirname(os.path.realpath(__file__)) + "\sounds\\ambient" + str(random.randint(1,3)) + ".wav")
+            mixer.music.play()
 
 
 # This is the entry point of our program

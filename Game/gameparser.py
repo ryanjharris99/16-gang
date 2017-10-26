@@ -60,13 +60,15 @@ def filter_words(words, skip_words):
     return filtered_list
 
 def type_print(text, speed = 0.02):
-    typing.play() #Plays the typing sound
+    if os.path.isdir(os.getcwd() + "\sounds"):
+        typing.play() #Plays the typing sound
     for c in text:
         sys.stdout.write( '%s' % c ) #https://stackoverflow.com/questions/9246076/how-to-print-one-character-at-a-time-on-one-line
         sys.stdout.flush()
         time.sleep(speed)
-    print("\n")  
-    typing.stop()#Stops the typing sound
+    print("\n")
+    if os.path.isdir(os.getcwd() + "\sounds"):
+        typing.stop()#Stops the typing sound
 
 def remove_punct(text):
     """This function is used to remove all punctuation
