@@ -4,7 +4,8 @@ import sched, time, random, os, sys
 from pygame import mixer
 
 mixer.init()
-typing = mixer.Sound(os.path.dirname(os.path.realpath(__file__)) + "\sounds\\typing.wav")
+if os.path.isdir(os.getcwd() + "\sounds"):
+    typing = mixer.Sound(os.path.dirname(os.path.realpath(__file__)) + "\sounds\\typing.wav")
 # List of key words (feel free to add more)
 skip_words = ['a', 'about', 'all', 'an', 'another', 'any', 'around', 'at',
               'bad', 'beautiful', 'been', 'better', 'big', 'can', 'every', 'for',
