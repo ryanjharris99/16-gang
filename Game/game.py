@@ -398,16 +398,14 @@ def move(exits, direction):
     return rooms[exits[direction]]
 
 def play_music():
-    mixer.music.load(os.path.dirname(os.path.realpath(__file__)) + "\sounds\\ambient" + str(random.randint(1,3)) + ".wav")
-    mixer.music.play()
     mixer.music.set_volume(0.1)
-    for i in range(0,10):
-        mixer.music.queue(os.path.dirname(os.path.realpath(__file__)) + "\sounds\\ambient" + str(random.randint(1,3)) + ".wav")
+    if mixer.music.get_busy() == 0:
+        mixer.music.load(os.path.dirname(os.path.realpath(__file__)) + "\sounds\\ambient" + str(random.randint(1,3)) + ".wav")
+        mixer.music.play()
 
 
 # This is the entry point of our program
 def main():
-    play_music()
     global energy
     gameStart = getCurrentTime() #time the game started
     energyLossTime = getCurrentTime() #time since energy was last lost
@@ -417,14 +415,15 @@ def main():
     command = [""] #Set command to a blank list so that NoneType errors don't occur
     difficulty = player.difficulty #Get the difficulty from the player.py
     if difficulty == "easy": #Set energy loss time depending on difficulty
-        energyLoss = 240
+        energyLoss = 200
     elif difficulty == "normal":
-        energyLoss = 180
+        energyLoss = 150
     else:
         energyLoss = 100
 
     # Main game loop
     while True:
+        play_music()
         # Display game status (room description, inventory etc.)
         if checkEndings(current_room, command): #Check if any end conditions have been met
             break
