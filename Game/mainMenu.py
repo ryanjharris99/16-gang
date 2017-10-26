@@ -6,8 +6,6 @@ from gameparser import type_print
 from game import main
 
 mixer.init()
-print(os.path.isdir(os.getcwd() + "\sounds"))
-print(os.getcwd() + "\sounds")
 if os.path.isdir(os.getcwd() + "\sounds"):
 	menu_music = mixer.music.load(os.path.dirname(os.path.realpath(__file__)) + "\sounds\menumusic.wav") #The music to be played in the menu
 	mixer.music.play()
